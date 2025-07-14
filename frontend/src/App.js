@@ -1,26 +1,69 @@
 import React, { useState } from "react";
 import "./App.css";
 import noelImg from "./assets/noel-ikiara.png";
-import sherryImg from "./assets/sherry-seepersad.png";
-import kathyImg from "./assets/kathy-awuor.jpg";
+import sherryImg from "./assets/sherry-seepersad1.jpg";
+import kathyImg from "./assets/kathy-awuor(1).jpg";
 import aidahImg from "./assets/aidahbani-wanjiru.jpg";
-import oxyworldLogo from "./assets/oxyworld-psa-medikal-medisam2.png";
-import tarajiLogo from "./assets/taraji-quest-logo (1).png";
+import oxyworldLogo from "./assets/OXYWORLD-PSA-NEW-LOGO.png";
+import tarajiLogo from "./assets/taraji-quest-limited-logo-1.png";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
+
+// ScrollToTop component for route changes
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [pathname]);
+  return null;
+}
 
 // Navigation Component
 const Navigation = ({ currentSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPillarsDropdownOpen, setIsPillarsDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Helper to check if on homepage
+  const isHome = location.pathname === "/";
 
   // Function to handle navigation clicks
-  const handleNavClick = (sectionId) => {
-    setIsMenuOpen(false); // Close mobile menu
-    setIsPillarsDropdownOpen(false); // Close dropdown
-    // Smooth scroll to section
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleHomeClick = () => {
+    setIsMenuOpen(false);
+    setIsPillarsDropdownOpen(false);
+    if (isHome) {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
     }
+  };
+
+  // Function to handle Our Team click
+  const handleTeamClick = () => {
+    setIsMenuOpen(false);
+    setIsPillarsDropdownOpen(false);
+    if (isHome) {
+      const section = document.getElementById("team");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate("/", { state: { scrollTo: "team" } });
+    }
+  };
+
+  // Function to handle pillar page navigation
+  const handlePillarNav = (path) => {
+    setIsMenuOpen(false);
+    setIsPillarsDropdownOpen(false);
+    navigate(path);
   };
 
   // Determine navigation styling based on current section
@@ -53,30 +96,28 @@ const Navigation = ({ currentSection }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <div className="flex items-center">
+          <div
+            className="flex items-center cursor-pointer"
+            onClick={handleHomeClick}
+          >
+            {" "}
+            {/* Make logo clickable */}
             <img
               src={tarajiLogo}
               alt="Taraji Quest"
-              className="h-10 w-auto mr-3"
+              className="h-16 w-auto mr-0 drop-shadow-lg transition-all duration-300"
+              style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.25))" }}
             />
-            <span className={`text-xl font-bold ${styles.logoClass}`}>
-              TARAJI QUEST
-            </span>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
-            <a
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick("home");
-              }}
-              className={`${styles.textClass} hover:text-blue-400 transition-colors duration-300`}
+            <span
+              onClick={handleHomeClick}
+              className={`${styles.textClass} hover:text-blue-400 transition-colors duration-300 cursor-pointer`}
             >
               HOME
-            </a>
-
+            </span>
             {/* Pillars Dropdown */}
             <div className="relative group">
               <button
@@ -110,97 +151,76 @@ const Navigation = ({ currentSection }) => {
                 }`}
               >
                 <div className="py-2">
-                  <a
-                    href="#services"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick("services");
-                    }}
-                    className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200"
+                  <span
+                    onClick={() => handlePillarNav("/taraji-healthcare")}
+                    className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200 cursor-pointer"
                   >
                     Taraji Health Care
-                  </a>
-                  <a
-                    href="#services"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick("services");
-                    }}
-                    className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200"
+                  </span>
+                  <span
+                    onClick={() => handlePillarNav("/taraji-sunlux-energy")}
+                    className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200 cursor-pointer"
                   >
                     Taraji Sunlux Energy
-                  </a>
-                  <a
-                    href="#services"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick("services");
-                    }}
-                    className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200"
+                  </span>
+                  <span
+                    onClick={() => handlePillarNav("/taraji-agri")}
+                    className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200 cursor-pointer"
                   >
                     Taraji Agri
-                  </a>
-                  <a
-                    href="#services"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick("services");
-                    }}
-                    className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200"
+                  </span>
+                  <span
+                    onClick={() => handlePillarNav("/taraji-foundations")}
+                    className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200 cursor-pointer"
                   >
                     Taraji Foundation
-                  </a>
+                  </span>
                 </div>
               </div>
             </div>
-
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick("contact");
-              }}
-              className={`${styles.textClass} hover:text-blue-400 transition-colors duration-300`}
+            <span
+              onClick={handleTeamClick}
+              className={`${styles.textClass} hover:text-blue-400 transition-colors duration-300 cursor-pointer`}
             >
               CONTACT US
-            </a>
+            </span>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden ${styles.textClass}`}
+            className={`md:hidden ${styles.textClass} focus:outline-none transition-transform duration-300`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+            <span className="relative w-6 h-6 block">
+              <span
+                className={`absolute left-0 top-1/2 w-6 h-0.5 bg-current transition-all duration-300 ${
+                  isMenuOpen ? "rotate-45 translate-y-0" : "-translate-y-2"
+                }`}
+              ></span>
+              <span
+                className={`absolute left-0 top-1/2 w-6 h-0.5 bg-current transition-all duration-300 ${
+                  isMenuOpen ? "opacity-0" : ""
+                }`}
+              ></span>
+              <span
+                className={`absolute left-0 top-1/2 w-6 h-0.5 bg-current transition-all duration-300 ${
+                  isMenuOpen ? "-rotate-45 translate-y-0" : "translate-y-2"
+                }`}
+              ></span>
+            </span>
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className={styles.mobileMenuClass}>
-            <a
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick("home");
-              }}
-              className="block py-2 text-white hover:text-blue-400"
+            <span
+              onClick={handleHomeClick}
+              className="block py-2 text-white hover:text-blue-400 cursor-pointer"
             >
               HOME
-            </a>
-
+            </span>
             {/* Mobile Pillars Dropdown */}
             <div className="border-t border-white border-opacity-20 mt-2 pt-2">
               <button
@@ -227,55 +247,68 @@ const Navigation = ({ currentSection }) => {
 
               {isPillarsDropdownOpen && (
                 <div className="ml-4 mt-2 space-y-1">
-                  <a
-                    href="#services"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick("services");
-                    }}
-                    className="block py-1 text-white hover:text-blue-400 text-sm"
+                  <span
+                    onClick={() => handlePillarNav("/taraji-healthcare")}
+                    className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
                   >
                     Taraji Health Care
-                  </a>
-                  <a
-                    href="#services"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick("services");
-                    }}
-                    className="block py-1 text-white hover:text-blue-400 text-sm"
+                  </span>
+                  <span
+                    onClick={() => handlePillarNav("/taraji-sunlux-energy")}
+                    className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
                   >
                     Taraji Sunlux Energy
-                  </a>
-                  <a
-                    href="#services"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick("services");
-                    }}
-                    className="block py-1 text-white hover:text-blue-400 text-sm"
+                  </span>
+                  <span
+                    onClick={() => handlePillarNav("/taraji-agri")}
+                    className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
                   >
                     Taraji Agri
-                  </a>
-                  <a
-                    href="#services"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick("services");
-                    }}
-                    className="block py-1 text-white hover:text-blue-400 text-sm"
+                  </span>
+                  <span
+                    onClick={() => handlePillarNav("/taraji-foundations")}
+                    className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
                   >
                     Taraji Foundation
-                  </a>
+                  </span>
                 </div>
               )}
             </div>
-
+            <span
+              onClick={handleTeamClick}
+              className="block py-2 text-white hover:text-blue-400 cursor-pointer"
+            >
+              CONTACT US
+            </span>
+            <span
+              onClick={() => handlePillarNav("/taraji-healthcare")}
+              className="block py-2 text-white hover:text-blue-400 cursor-pointer"
+            >
+              Taraji Health Care
+            </span>
+            <span
+              onClick={() => handlePillarNav("/taraji-sunlux-energy")}
+              className="block py-2 text-white hover:text-blue-400 cursor-pointer"
+            >
+              Taraji Sunlux Energy
+            </span>
+            <span
+              onClick={() => handlePillarNav("/taraji-agri")}
+              className="block py-2 text-white hover:text-blue-400 cursor-pointer"
+            >
+              Taraji Agri
+            </span>
+            <span
+              onClick={() => handlePillarNav("/taraji-foundations")}
+              className="block py-2 text-white hover:text-blue-400 cursor-pointer"
+            >
+              Taraji Foundation
+            </span>
             <a
               href="#contact"
               onClick={(e) => {
                 e.preventDefault();
-                handleNavClick("contact");
+                handlePillarNav("contact");
               }}
               className="block py-2 text-white hover:text-blue-400"
             >
@@ -316,14 +349,13 @@ const HeroSection = () => {
             rel="noopener noreferrer"
             className="inline-block"
           >
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-4 border border-white border-opacity-20 hover:bg-opacity-20 transition-all duration-300">
-              <div className="w-64 h-32 mx-auto flex items-center justify-center">
-                <img
-                  src={oxyworldLogo}
-                  alt="Oxyworld PSA Medikal Medisam"
-                  className="w-full h-full object-contain"
-                />
-              </div>
+            <div className="flex items-center justify-center">
+              <img
+                src={oxyworldLogo}
+                alt="Oxyworld PSA Medikal Medisam"
+                className="w-[32rem] h-48 object-contain drop-shadow-2xl transition-all duration-300"
+                style={{ filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.35))" }}
+              />
             </div>
           </a>
         </div>
@@ -395,6 +427,121 @@ const AboutSection = () => {
   );
 };
 
+// SDG data for each pillar
+const SDGS = {
+  healthcare: [
+    "SDG 3 – Good Health & Well-being",
+    "SDG 1 – No Poverty",
+    "SDG 2 – Zero Hunger",
+    "SDG 8 – Decent Work & Economic Growth",
+  ],
+  sunlux: [
+    "SDG 7 – Affordable & Clean Energy",
+    "SDG 9 – Industry, Innovation & Infrastructure",
+    "SDG 13 – Climate Action",
+  ],
+  agri: [
+    "SDG 2 – Zero Hunger",
+    "SDG 12 – Responsible Consumption & Production",
+    "SDG 15 – Life on Land",
+  ],
+  foundation: [
+    "SDG 11 – Sustainable Cities & Communities",
+    "SDG 8 – Decent Work & Economic Growth",
+    "SDG 1 – No Poverty",
+  ],
+};
+
+// SDG List Component
+const SDGList = ({ sdgs }) => (
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 mt-8">
+    {sdgs.map((sdg, idx) => (
+      <div
+        key={idx}
+        className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100"
+      >
+        <p className="text-sm font-medium text-gray-700">{sdg}</p>
+      </div>
+    ))}
+  </div>
+);
+
+// New Pages
+const TarajiHealthCare = () => (
+  <div className="App bg-gray-50">
+    <Navigation currentSection={"taraji-healthcare"} />
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
+      {" "}
+      {/* pt-28 for navbar offset */}
+      <h1 className="text-4xl font-bold text-blue-700 mb-6">
+        Taraji Health Care
+      </h1>
+      <p className="mb-4 text-lg text-gray-700">
+        Providing Quality and Affordable Healthcare throughout Africa with a
+        vision for social and economic balance within the Community.
+      </p>
+      <SDGList sdgs={SDGS.healthcare} />
+      <div className="mt-8 text-gray-600">More information coming soon...</div>
+    </div>
+    <Footer />
+  </div>
+);
+const TarajiSunluxEnergy = () => (
+  <div className="App bg-gray-50">
+    <Navigation currentSection={"taraji-sunlux-energy"} />
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
+      {" "}
+      {/* pt-28 for navbar offset */}
+      <h1 className="text-4xl font-bold text-green-700 mb-6">
+        Taraji Sunlux Energy
+      </h1>
+      <p className="mb-4 text-lg text-gray-700">
+        Providing Quality Renewable Energy and Technology through renewable
+        energy such as solar bio-fuel among other solutions.
+      </p>
+      <SDGList sdgs={SDGS.sunlux} />
+      <div className="mt-8 text-gray-600">More information coming soon...</div>
+    </div>
+    <Footer />
+  </div>
+);
+const TarajiAgri = () => (
+  <div className="App bg-gray-50">
+    <Navigation currentSection={"taraji-agri"} />
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
+      {" "}
+      {/* pt-28 for navbar offset */}
+      <h1 className="text-4xl font-bold text-green-800 mb-6">Taraji Agri</h1>
+      <p className="mb-4 text-lg text-gray-700">
+        Optimizing agricultural productivity while preserving the natural
+        environment, and ensuring the highest quality of agricultural products.
+      </p>
+      <SDGList sdgs={SDGS.agri} />
+      <div className="mt-8 text-gray-600">More information coming soon...</div>
+    </div>
+    <Footer />
+  </div>
+);
+const TarajiFoundation = () => (
+  <div className="App bg-gray-50">
+    <Navigation currentSection={"taraji-foundations"} />
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
+      {" "}
+      {/* pt-28 for navbar offset */}
+      <h1 className="text-4xl font-bold text-blue-800 mb-6">
+        Taraji Foundation
+      </h1>
+      <p className="mb-4 text-lg text-gray-700">
+        Empowering communities by addressing their needs with a focus on food,
+        employment, affordable energy and preventative healthcare.
+      </p>
+      <SDGList sdgs={SDGS.foundation} />
+      <div className="mt-8 text-gray-600">More information coming soon...</div>
+    </div>
+    <Footer />
+  </div>
+);
+
 // Pillars Section Component
 const PillarsSection = () => {
   return (
@@ -417,34 +564,33 @@ const PillarsSection = () => {
               seeks to empower individuals, protect the environment, and promote
               social & economic development.
             </p>
-            <p className="font-semibold text-gray-900">
-              Our purpose aligns with the Sustainable Development Goals (SDGs)
-              including:
-            </p>
+            {/* SDGs moved to respective pages */}
           </div>
         </div>
 
-        {/* SDG Goals */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
-          {[
-            "SDG 1 – No Poverty",
-            "SDG 2 – Zero Hunger",
-            "SDG 3 – Good Health & Well-being",
-            "SDG 7 – Affordable & Clean Energy",
-            "SDG 8 – Decent Work & Economic Growth",
-            "SDG 9 – Industry, Innovation & Infrastructure",
-            "SDG 11 – Sustainable Cities & Communities",
-            "SDG 12 – Responsible Consumption & Production",
-            "SDG 13 – Climate Action",
-            "SDG 15 – Life on Land",
-          ].map((sdg, index) => (
-            <div
-              key={index}
-              className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100"
-            >
-              <p className="text-sm font-medium text-gray-700">{sdg}</p>
-            </div>
-          ))}
+        {/* Card grid with reduced gap */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 mb-8">
+          {" "}
+          {/* gap-2 instead of gap-4/8/16 */}
+          {/* Example cards, you can add more or use your own */}
+          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100">
+            <p className="text-sm font-medium text-gray-700">Agriculture</p>
+          </div>
+          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100">
+            <p className="text-sm font-medium text-gray-700">Energy</p>
+          </div>
+          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100">
+            <p className="text-sm font-medium text-gray-700">Healthcare</p>
+          </div>
+          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100">
+            <p className="text-sm font-medium text-gray-700">Hospitality</p>
+          </div>
+          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100">
+            <p className="text-sm font-medium text-gray-700">Conservation</p>
+          </div>
+          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100">
+            <p className="text-sm font-medium text-gray-700">Community</p>
+          </div>
         </div>
       </div>
     </section>
@@ -453,6 +599,7 @@ const PillarsSection = () => {
 
 // Services Section Component
 const ServicesSection = () => {
+  const navigate = useNavigate();
   const services = [
     {
       title: "Taraji Health care",
@@ -461,6 +608,7 @@ const ServicesSection = () => {
       image:
         "https://images.unsplash.com/photo-1594058573823-d8edf1ad3380?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MXwxfHNlYXJjaHwxfHxzdXN0YWluYWJpbGl0eXxlbnwwfHx8Z3JlZW58MTc1MjM1MDgwNHww&ixlib=rb-4.1.0&q=85",
       gradient: "from-blue-500 to-cyan-500",
+      link: "/taraji-healthcare",
     },
     {
       title: "Taraji Sunlux Energy",
@@ -469,6 +617,7 @@ const ServicesSection = () => {
       image:
         "https://images.unsplash.com/photo-1662601311085-e5747d08992a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwxfHxzb2xhciUyMGVuZXJneXxlbnwwfHx8Z3JlZW58MTc1MjM1MDgxM3ww&ixlib=rb-4.1.0&q=85",
       gradient: "from-green-500 to-emerald-500",
+      link: "/taraji-sunlux-energy",
     },
     {
       title: "Taraji Agri",
@@ -477,6 +626,7 @@ const ServicesSection = () => {
       image:
         "https://images.unsplash.com/photo-1522315710315-bb232602118a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxzb2xhciUyMGVuZXJneXxlbnwwfHx8Z3JlZW58MTc1MjM1MDgxM3ww&ixlib=rb-4.1.0&q=85",
       gradient: "from-blue-500 to-green-500",
+      link: "/taraji-agri",
     },
     {
       title: "Taraji Foundation",
@@ -485,6 +635,7 @@ const ServicesSection = () => {
       image:
         "https://images.unsplash.com/photo-1654419189892-d8814766c4fd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwzfHxzb2xhciUyMGVuZXJneXxlbnwwfHx8Z3JlZW58MTc1MjM1MDgxM3ww&ixlib=rb-4.1.0&q=85",
       gradient: "from-emerald-500 to-blue-500",
+      link: "/taraji-foundations",
     },
   ];
 
@@ -514,7 +665,10 @@ const ServicesSection = () => {
               </div>
               <div className="p-6">
                 <p className="text-gray-600 mb-4">{service.description}</p>
-                <button className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-2 rounded-full font-semibold hover:from-blue-600 hover:to-green-600 transition-all duration-300">
+                <button
+                  className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-2 rounded-full font-semibold hover:from-blue-600 hover:to-green-600 transition-all duration-300"
+                  onClick={() => navigate(service.link)}
+                >
                   Learn More
                 </button>
               </div>
@@ -536,7 +690,7 @@ const TeamSection = () => {
     },
     {
       name: "Sherry Seepersad",
-      role: "Managing Director, Taraji Sunlux Energy",
+      role: "Managing Director, Taraji Health Care",
       image: sherryImg,
     },
     {
@@ -545,7 +699,7 @@ const TeamSection = () => {
       image: kathyImg,
     },
     {
-      name: "Aidah Bani Wanjiru",
+      name: "Aidahbani Wanjiru",
       role: "ACCOUNTING & FINANCE",
       image: aidahImg,
     },
@@ -653,14 +807,12 @@ const Footer = () => {
         <div className="text-center">
           {/* Logo */}
           <div className="flex items-center justify-center mb-6">
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-green-400 rounded-lg flex items-center justify-center mr-3">
-              <svg viewBox="0 0 24 24" className="w-6 h-6 text-white">
-                <path
-                  fill="currentColor"
-                  d="M12,2L4.5,6.5V17.5L12,22L19.5,17.5V6.5L12,2M12,4.4L17.3,7.5L12,10.6L6.7,7.5L12,4.4M6.5,9L11,11.4V19.1L6.5,16.7V9M13,11.4L17.5,9V16.7L13,19.1V11.4Z"
-                />
-              </svg>
-            </div>
+            <img
+              src={tarajiLogo}
+              alt="Taraji Quest Logo"
+              className="h-12 w-auto mr-3 drop-shadow-lg"
+              style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.25))" }}
+            />
             <span className="text-2xl font-bold text-blue-400">
               Taraji Quest
             </span>
@@ -709,8 +861,9 @@ const Footer = () => {
 };
 
 // Main App Component
-function App() {
+function MainApp() {
   const [currentSection, setCurrentSection] = useState("home");
+  const location = useLocation();
 
   // Function to handle scroll and detect current section
   const handleScroll = () => {
@@ -741,6 +894,18 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Scroll to team if navigated with state
+  React.useEffect(() => {
+    if (location.state && location.state.scrollTo === "team") {
+      const section = document.getElementById("team");
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+        }, 200);
+      }
+    }
+  }, [location]);
+
   return (
     <div className="App">
       <Navigation currentSection={currentSection} />
@@ -753,6 +918,21 @@ function App() {
       <CTASection />
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<MainApp />} />
+        <Route path="/taraji-healthcare" element={<TarajiHealthCare />} />
+        <Route path="/taraji-sunlux-energy" element={<TarajiSunluxEnergy />} />
+        <Route path="/taraji-agri" element={<TarajiAgri />} />
+        <Route path="/taraji-foundations" element={<TarajiFoundation />} />
+      </Routes>
+    </Router>
   );
 }
 
