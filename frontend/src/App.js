@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import noelImg from "./assets/noel-ikiara.png";
+import noelImg from "./assets/noel-ikiara1.png";
 import sherryImg from "./assets/sherry-seepersad1.jpg";
 import kathyImg from "./assets/kathy-awuor(1).jpg";
 import aidahImg from "./assets/aidahbani-wanjiru.jpg";
@@ -31,9 +31,12 @@ import foundationVid1 from "./assets/taraji-foundation/taraji-foundation-1.mp4";
 import foundationVid2 from "./assets/taraji-foundation/taraji-foundation-2.mp4";
 import tarajiAgri2_5 from "./assets/taraji-agri/taraji-agri-2.5.jpg";
 import foundationImg2 from "./assets/taraji-foundation/taraji-foundation-2.jpg";
+import foundationImg3 from "./assets/taraji-foundation/taraji-foundation-3.jpg";
+import oxyworldPartner from "./assets/our-partners/oxyworld-partner.png";
 import inluxSolarLogo from "./assets/our-partners/inlux-solar-partner.png";
 import sunInOneLogo from "./assets/our-partners/sun-in-one-partner.png";
 import maxInternationalLogo from "./assets/our-partners/max-international.png";
+import tarajiEnergyBusinessPlan from "./assets/taraji-sunlux-energy/taraji-energy-business-plan.pdf";
 
 // ScrollToTop component for route changes
 function ScrollToTop() {
@@ -493,6 +496,18 @@ const TarajiSunluxEnergy = () => (
         energy such as solar bio-fuel among other solutions.
       </p>
       <SDGList sdgs={SDGS.sunlux} />
+      {/* Download Business Plan Button */}
+      <div className="my-8 flex justify-start">
+        <a
+          href={tarajiEnergyBusinessPlan}
+          download
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-green-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
+        >
+          Download & View Our Business Plan
+        </a>
+      </div>
       <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         <img
           src={sunlux1}
@@ -591,6 +606,20 @@ const TarajiFoundation = () => (
         employment, affordable energy and preventative healthcare.
       </p>
       <SDGList sdgs={SDGS.foundation} />
+      {/* Images first */}
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <img
+          src={foundationImg3}
+          alt="Taraji Foundation 3"
+          className="rounded-2xl shadow-2xl w-full h-96 object-cover border-4 border-blue-100"
+        />
+        <img
+          src={foundationImg2}
+          alt="Taraji Foundation 2"
+          className="rounded-2xl shadow-2xl w-full h-96 object-cover border-4 border-blue-100"
+        />
+      </div>
+      {/* Videos after images */}
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
         <video
           controls
@@ -731,21 +760,29 @@ const TeamSection = () => {
       name: "Noel Ikiara",
       role: "FOUNDER & Director",
       image: noelImg,
+      whatsapp: "+254722283442",
+      email: "n.ikiara@taraji-quest.com",
     },
     {
       name: "Sherry Seepersad",
       role: "Managing Director, Taraji Health Care",
       image: sherryImg,
+      whatsapp: "+18687882753",
+      email: "s.seepersad@taraji-quest.com",
     },
     {
       name: "Kathy Awuor",
       role: "SALES & MARKETING EXECUTIVE",
       image: kathyImg,
+      whatsapp: "+254723453352",
+      email: "k.awuor@taraji-quest.com",
     },
     {
       name: "Aidahbani Wanjiru",
       role: "ACCOUNTING & FINANCE",
       image: aidahImg,
+      whatsapp: "+254725889853",
+      email: "a.wanjiru@taraji-quest.com",
     },
   ];
 
@@ -776,6 +813,42 @@ const TeamSection = () => {
               <p className="text-blue-600 font-semibold text-sm uppercase tracking-wide">
                 {member.role}
               </p>
+              {/* Contact Icons */}
+              <div className="flex justify-center items-center gap-4 mt-4">
+                {/* WhatsApp Icon */}
+                <a
+                  href={`https://wa.me/${member.whatsapp.replace(
+                    /[^\d]/g,
+                    ""
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 transition-colors shadow-md"
+                  title={`Chat with ${member.name} on WhatsApp`}
+                >
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.106" />
+                  </svg>
+                </a>
+                {/* Email Icon */}
+                <a
+                  href={`mailto:${member.email}`}
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-500 hover:bg-blue-600 transition-colors shadow-md"
+                  title={`Email ${member.name}`}
+                >
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l7.99 7.99c.39.39 1.02.39 1.41 0L20 10.01V20H4z" />
+                  </svg>
+                </a>
+              </div>
             </div>
           ))}
         </div>
@@ -787,6 +860,7 @@ const TeamSection = () => {
 // Partners Section Component
 const PartnersSection = () => {
   const partners = [
+    { name: "Oxyworld-psa Medisam Medikal", logo: oxyworldPartner },
     { name: "Inlux Solar Partner", logo: inluxSolarLogo },
     { name: "Sun-In-One", logo: sunInOneLogo },
     { name: "Max International", logo: maxInternationalLogo },
