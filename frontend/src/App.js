@@ -633,7 +633,7 @@ const TarajiFoundation = () => (
           className="rounded-2xl shadow-2xl w-full h-96 object-cover border-4 border-blue-100"
         >
           <source src={foundationVid2} type="video/mp4" />
-          Your browser does not support the video tag.
+          Your browser does not support the video tag...
         </video>
       </div>
     </div>
