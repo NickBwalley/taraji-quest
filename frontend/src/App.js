@@ -14,6 +14,26 @@ import {
   useNavigate,
   useLocation,
 } from "react-router-dom";
+import tarajiAgri1 from "./assets/taraji-agri/taraji-agri-2.jpg";
+import tarajiAgri2 from "./assets/taraji-agri/taraji-agri-2.5.jpg";
+import tarajiAgri3 from "./assets/taraji-agri/taraji-agri-3.jpg";
+import tarajiAgri4 from "./assets/taraji-agri/taraji-agri-4.jpg";
+import tarajiAgri5 from "./assets/taraji-agri/taraji-agri-5.jpg";
+import tarajiAgri6 from "./assets/taraji-agri/taraji-agri-6.jpg";
+import tarajiAgri8 from "./assets/taraji-agri/taraji-agri-8.jpg";
+import tarajiAgri9 from "./assets/taraji-agri/taraji-agri-9.jpg";
+import tarajiAgriVideo from "./assets/taraji-agri/taraji-agri-1.mp4";
+import oxyworldPsaImg1 from "./assets/taraji-healthcare/oxyworld-psa-img1.png";
+import sunlux1 from "./assets/taraji-sunlux-energy/taraji-sunlux-energy-1.jpg";
+import sunlux2 from "./assets/taraji-sunlux-energy/taraji-sunlux-energy-2.jpg";
+import sunlux3 from "./assets/taraji-sunlux-energy/taraji-sunlux-energy-3.jpg";
+import foundationVid1 from "./assets/taraji-foundation/taraji-foundation-1.mp4";
+import foundationVid2 from "./assets/taraji-foundation/taraji-foundation-2.mp4";
+import tarajiAgri2_5 from "./assets/taraji-agri/taraji-agri-2.5.jpg";
+import foundationImg2 from "./assets/taraji-foundation/taraji-foundation-2.jpg";
+import inluxSolarLogo from "./assets/our-partners/inlux-solar-partner.png";
+import sunInOneLogo from "./assets/our-partners/sun-in-one-partner.png";
+import maxInternationalLogo from "./assets/our-partners/max-international.png";
 
 // ScrollToTop component for route changes
 function ScrollToTop() {
@@ -280,40 +300,6 @@ const Navigation = ({ currentSection }) => {
             >
               CONTACT US
             </span>
-            <span
-              onClick={() => handlePillarNav("/taraji-healthcare")}
-              className="block py-2 text-white hover:text-blue-400 cursor-pointer"
-            >
-              Taraji Health Care
-            </span>
-            <span
-              onClick={() => handlePillarNav("/taraji-sunlux-energy")}
-              className="block py-2 text-white hover:text-blue-400 cursor-pointer"
-            >
-              Taraji Sunlux Energy
-            </span>
-            <span
-              onClick={() => handlePillarNav("/taraji-agri")}
-              className="block py-2 text-white hover:text-blue-400 cursor-pointer"
-            >
-              Taraji Agri
-            </span>
-            <span
-              onClick={() => handlePillarNav("/taraji-foundations")}
-              className="block py-2 text-white hover:text-blue-400 cursor-pointer"
-            >
-              Taraji Foundation
-            </span>
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                handlePillarNav("contact");
-              }}
-              className="block py-2 text-white hover:text-blue-400"
-            >
-              CONTACT US
-            </a>
           </div>
         )}
       </div>
@@ -323,6 +309,10 @@ const Navigation = ({ currentSection }) => {
 
 // Hero Section Component
 const HeroSection = () => {
+  const [logoPopped, setLogoPopped] = React.useState(false);
+  React.useEffect(() => {
+    setTimeout(() => setLogoPopped(true), 200);
+  }, []);
   return (
     <section
       id="home"
@@ -353,7 +343,9 @@ const HeroSection = () => {
               <img
                 src={oxyworldLogo}
                 alt="Oxyworld PSA Medikal Medisam"
-                className="w-[32rem] h-48 object-contain drop-shadow-2xl transition-all duration-300"
+                className={`w-[48rem] h-64 object-contain drop-shadow-2xl transition-all duration-700 ease-out ${
+                  logoPopped ? "scale-110 shadow-2xl" : "scale-90 opacity-80"
+                }`}
                 style={{ filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.35))" }}
               />
             </div>
@@ -431,8 +423,6 @@ const AboutSection = () => {
 const SDGS = {
   healthcare: [
     "SDG 3 – Good Health & Well-being",
-    "SDG 1 – No Poverty",
-    "SDG 2 – Zero Hunger",
     "SDG 8 – Decent Work & Economic Growth",
   ],
   sunlux: [
@@ -441,14 +431,15 @@ const SDGS = {
     "SDG 13 – Climate Action",
   ],
   agri: [
+    "SDG 1 – No Poverty",
     "SDG 2 – Zero Hunger",
     "SDG 12 – Responsible Consumption & Production",
     "SDG 15 – Life on Land",
   ],
   foundation: [
+    "SDG 1 – No Poverty",
     "SDG 11 – Sustainable Cities & Communities",
     "SDG 8 – Decent Work & Economic Growth",
-    "SDG 1 – No Poverty",
   ],
 };
 
@@ -471,8 +462,6 @@ const TarajiHealthCare = () => (
   <div className="App bg-gray-50">
     <Navigation currentSection={"taraji-healthcare"} />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
-      {" "}
-      {/* pt-28 for navbar offset */}
       <h1 className="text-4xl font-bold text-blue-700 mb-6">
         Taraji Health Care
       </h1>
@@ -481,7 +470,13 @@ const TarajiHealthCare = () => (
         vision for social and economic balance within the Community.
       </p>
       <SDGList sdgs={SDGS.healthcare} />
-      <div className="mt-8 text-gray-600">More information coming soon...</div>
+      <div className="mt-12 flex justify-center">
+        <img
+          src={oxyworldPsaImg1}
+          alt="Oxyworld PSA Healthcare"
+          className="rounded-2xl shadow-2xl max-w-xl w-full object-cover border-4 border-blue-100"
+        />
+      </div>
     </div>
     <Footer />
   </div>
@@ -490,8 +485,6 @@ const TarajiSunluxEnergy = () => (
   <div className="App bg-gray-50">
     <Navigation currentSection={"taraji-sunlux-energy"} />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
-      {" "}
-      {/* pt-28 for navbar offset */}
       <h1 className="text-4xl font-bold text-green-700 mb-6">
         Taraji Sunlux Energy
       </h1>
@@ -500,7 +493,23 @@ const TarajiSunluxEnergy = () => (
         energy such as solar bio-fuel among other solutions.
       </p>
       <SDGList sdgs={SDGS.sunlux} />
-      <div className="mt-8 text-gray-600">More information coming soon...</div>
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <img
+          src={sunlux1}
+          alt="Sunlux Energy 1"
+          className="rounded-xl shadow-lg object-cover w-full h-64"
+        />
+        <img
+          src={sunlux2}
+          alt="Sunlux Energy 2"
+          className="rounded-xl shadow-lg object-cover w-full h-64"
+        />
+        <img
+          src={sunlux3}
+          alt="Sunlux Energy 3"
+          className="rounded-xl shadow-lg object-cover w-full h-64"
+        />
+      </div>
     </div>
     <Footer />
   </div>
@@ -509,15 +518,63 @@ const TarajiAgri = () => (
   <div className="App bg-gray-50">
     <Navigation currentSection={"taraji-agri"} />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
-      {" "}
-      {/* pt-28 for navbar offset */}
       <h1 className="text-4xl font-bold text-green-800 mb-6">Taraji Agri</h1>
       <p className="mb-4 text-lg text-gray-700">
         Optimizing agricultural productivity while preserving the natural
         environment, and ensuring the highest quality of agricultural products.
       </p>
       <SDGList sdgs={SDGS.agri} />
-      <div className="mt-8 text-gray-600">More information coming soon...</div>
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <img
+          src={tarajiAgri1}
+          alt="Taraji Agri 1"
+          className="rounded-xl shadow-lg object-cover w-full h-64"
+        />
+        <img
+          src={tarajiAgri2}
+          alt="Taraji Agri 2"
+          className="rounded-xl shadow-lg object-cover w-full h-64"
+        />
+        <img
+          src={tarajiAgri3}
+          alt="Taraji Agri 3"
+          className="rounded-xl shadow-lg object-cover w-full h-64"
+        />
+        <img
+          src={tarajiAgri4}
+          alt="Taraji Agri 4"
+          className="rounded-xl shadow-lg object-cover w-full h-64"
+        />
+        <img
+          src={tarajiAgri5}
+          alt="Taraji Agri 5"
+          className="rounded-xl shadow-lg object-cover w-full h-64"
+        />
+        <img
+          src={tarajiAgri6}
+          alt="Taraji Agri 6"
+          className="rounded-xl shadow-lg object-cover w-full h-64"
+        />
+        <img
+          src={tarajiAgri8}
+          alt="Taraji Agri 8"
+          className="rounded-xl shadow-lg object-cover w-full h-64"
+        />
+        <img
+          src={tarajiAgri9}
+          alt="Taraji Agri 9"
+          className="rounded-xl shadow-lg object-cover w-full h-64"
+        />
+      </div>
+      <div className="mt-12 flex justify-center">
+        <video
+          controls
+          className="rounded-2xl shadow-2xl max-w-2xl w-full border-4 border-green-100"
+        >
+          <source src={tarajiAgriVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
     <Footer />
   </div>
@@ -526,8 +583,6 @@ const TarajiFoundation = () => (
   <div className="App bg-gray-50">
     <Navigation currentSection={"taraji-foundations"} />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
-      {" "}
-      {/* pt-28 for navbar offset */}
       <h1 className="text-4xl font-bold text-blue-800 mb-6">
         Taraji Foundation
       </h1>
@@ -536,7 +591,22 @@ const TarajiFoundation = () => (
         employment, affordable energy and preventative healthcare.
       </p>
       <SDGList sdgs={SDGS.foundation} />
-      <div className="mt-8 text-gray-600">More information coming soon...</div>
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <video
+          controls
+          className="rounded-2xl shadow-2xl w-full h-96 object-cover border-4 border-blue-100"
+        >
+          <source src={foundationVid1} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <video
+          controls
+          className="rounded-2xl shadow-2xl w-full h-96 object-cover border-4 border-blue-100"
+        >
+          <source src={foundationVid2} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
     <Footer />
   </div>
@@ -545,7 +615,7 @@ const TarajiFoundation = () => (
 // Pillars Section Component
 const PillarsSection = () => {
   return (
-    <section id="pillars" className="py-20 bg-white">
+    <section id="pillars" className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="text-blue-600 font-semibold text-sm uppercase tracking-wide mb-2">
@@ -567,31 +637,6 @@ const PillarsSection = () => {
             {/* SDGs moved to respective pages */}
           </div>
         </div>
-
-        {/* Card grid with reduced gap */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 mb-8">
-          {" "}
-          {/* gap-2 instead of gap-4/8/16 */}
-          {/* Example cards, you can add more or use your own */}
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100">
-            <p className="text-sm font-medium text-gray-700">Agriculture</p>
-          </div>
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100">
-            <p className="text-sm font-medium text-gray-700">Energy</p>
-          </div>
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100">
-            <p className="text-sm font-medium text-gray-700">Healthcare</p>
-          </div>
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100">
-            <p className="text-sm font-medium text-gray-700">Hospitality</p>
-          </div>
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100">
-            <p className="text-sm font-medium text-gray-700">Conservation</p>
-          </div>
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-lg border border-blue-100">
-            <p className="text-sm font-medium text-gray-700">Community</p>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -605,8 +650,7 @@ const ServicesSection = () => {
       title: "Taraji Health care",
       description:
         "Providing Quality and Affordable Healthcare throughout Africa with a vision for social and economic balance within the Community.",
-      image:
-        "https://images.unsplash.com/photo-1594058573823-d8edf1ad3380?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MXwxfHNlYXJjaHwxfHxzdXN0YWluYWJpbGl0eXxlbnwwfHx8Z3JlZW58MTc1MjM1MDgwNHww&ixlib=rb-4.1.0&q=85",
+      image: oxyworldPsaImg1,
       gradient: "from-blue-500 to-cyan-500",
       link: "/taraji-healthcare",
     },
@@ -614,8 +658,7 @@ const ServicesSection = () => {
       title: "Taraji Sunlux Energy",
       description:
         "Providing Quality Renewable Energy and Technology through renewable energy such as solar bio-fuel among other solutions.",
-      image:
-        "https://images.unsplash.com/photo-1662601311085-e5747d08992a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwxfHxzb2xhciUyMGVuZXJneXxlbnwwfHx8Z3JlZW58MTc1MjM1MDgxM3ww&ixlib=rb-4.1.0&q=85",
+      image: sunlux1,
       gradient: "from-green-500 to-emerald-500",
       link: "/taraji-sunlux-energy",
     },
@@ -623,8 +666,7 @@ const ServicesSection = () => {
       title: "Taraji Agri",
       description:
         "Optimizing agricultural productivity while preserving the natural environment, and ensuring the highest quality of agricultural products.",
-      image:
-        "https://images.unsplash.com/photo-1522315710315-bb232602118a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxzb2xhciUyMGVuZXJneXxlbnwwfHx8Z3JlZW58MTc1MjM1MDgxM3ww&ixlib=rb-4.1.0&q=85",
+      image: tarajiAgri2_5,
       gradient: "from-blue-500 to-green-500",
       link: "/taraji-agri",
     },
@@ -632,15 +674,14 @@ const ServicesSection = () => {
       title: "Taraji Foundation",
       description:
         "Empowering communities by addressing their needs with a focus on food, employment, affordable energy and preventative healthcare.",
-      image:
-        "https://images.unsplash.com/photo-1654419189892-d8814766c4fd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwzfHxzb2xhciUyMGVuZXJneXxlbnwwfHx8Z3JlZW58MTc1MjM1MDgxM3ww&ixlib=rb-4.1.0&q=85",
+      image: foundationImg2,
       gradient: "from-emerald-500 to-blue-500",
       link: "/taraji-foundations",
     },
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-10 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-8">
           {services.map((service, index) => (
@@ -648,22 +689,25 @@ const ServicesSection = () => {
               key={index}
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
-              <div className="relative h-48">
+              <div className="relative h-56 flex items-center justify-center bg-gradient-to-r from-blue-50 to-green-50">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-56 object-cover rounded-t-2xl shadow-md border-b-4 border-blue-100 transition-transform duration-300 hover:scale-105"
+                  style={{ maxHeight: "14rem", objectFit: "cover" }}
                 />
                 <div
-                  className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-80`}
+                  className={`absolute inset-0 rounded-t-2xl pointer-events-none`}
+                  style={{
+                    background:
+                      "linear-gradient(180deg,rgba(0,0,0,0.10) 0%,rgba(0,0,0,0.05) 100%)",
+                  }}
                 ></div>
-                <div className="absolute inset-0 flex items-end p-6">
-                  <h3 className="text-2xl font-bold text-white">
-                    {service.title}
-                  </h3>
-                </div>
               </div>
               <div className="p-6">
+                <h3 className="text-2xl font-bold mb-2 text-gray-900">
+                  {service.title}
+                </h3>
                 <p className="text-gray-600 mb-4">{service.description}</p>
                 <button
                   className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-2 rounded-full font-semibold hover:from-blue-600 hover:to-green-600 transition-all duration-300"
@@ -743,9 +787,9 @@ const TeamSection = () => {
 // Partners Section Component
 const PartnersSection = () => {
   const partners = [
-    { name: "Inlux Solar Partner", logo: "INLUX SOLAR" },
-    { name: "Sun-In-One", logo: "Sun-In-One" },
-    { name: "Max International", logo: "MAX INTERNATIONAL" },
+    { name: "Inlux Solar Partner", logo: inluxSolarLogo },
+    { name: "Sun-In-One", logo: sunInOneLogo },
+    { name: "Max International", logo: maxInternationalLogo },
   ];
 
   return (
@@ -761,11 +805,17 @@ const PartnersSection = () => {
           {partners.map((partner, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 min-w-48"
+              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 min-w-48 flex flex-col items-center border border-blue-100"
             >
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                className="h-24 w-auto object-contain mb-4 drop-shadow-md transition-transform duration-300 hover:scale-105"
+                style={{ maxWidth: "180px" }}
+              />
               <div className="text-center">
                 <div className="text-lg font-bold text-gray-700">
-                  {partner.logo}
+                  {partner.name}
                 </div>
               </div>
             </div>
