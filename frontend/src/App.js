@@ -4,7 +4,7 @@ import noelImg from "./assets/noel-ikiara1.png";
 import sherryImg from "./assets/sherry-seepersad1.jpg";
 import kathyImg from "./assets/kathy-awuor(1).jpg";
 import aidahImg from "./assets/aidahbani-wanjiru.jpg";
-import oxyworldLogo from "./assets/OXYWORLD-PSA-NEW-LOGO.png";
+import oxyworldLogo from "./assets/oxyworld-psa-new-logo2.png";
 import tarajiLogo from "./assets/taraji-quest-limited-logo-1.png";
 import {
   BrowserRouter as Router,
