@@ -28,7 +28,7 @@ import sunlux1 from "./assets/taraji-sunlux-energy/taraji-sunlux-energy-1.jpg";
 import sunlux2 from "./assets/taraji-sunlux-energy/taraji-sunlux-energy-2.jpg";
 import sunlux3 from "./assets/taraji-sunlux-energy/taraji-sunlux-energy-3.jpg";
 import foundationVid1 from "./assets/taraji-foundation/taraji-foundation-1.mp4";
-import foundationVid2 from "./assets/taraji-foundation/taraji-foundation-2.mp4";
+import foundationVid2 from "./assets/taraji-foundation/taraji-foundation-3.mp4";
 import tarajiAgri2_5 from "./assets/taraji-agri/taraji-agri-2.5.jpg";
 import foundationImg2 from "./assets/taraji-foundation/taraji-foundation-2.jpg";
 import foundationImg3 from "./assets/taraji-foundation/taraji-foundation-3.jpg";
