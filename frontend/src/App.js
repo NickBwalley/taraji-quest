@@ -616,6 +616,56 @@ const TarajiAgri = () => (
     <Footer />
   </div>
 );
+
+// Custom Video Player (no download, play/pause only)
+const CustomVideoPlayer = ({ src, poster, alt }) => {
+  const videoRef = React.useRef(null);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+
+  const handlePlayPause = () => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
+    }
+  };
+
+  React.useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+    video.addEventListener("play", onPlay);
+    video.addEventListener("pause", onPause);
+    return () => {
+      video.removeEventListener("play", onPlay);
+      video.removeEventListener("pause", onPause);
+    };
+  }, []);
+
+  return (
+    <div className="relative rounded-2xl shadow-2xl w-full h-96 object-cover border-4 border-blue-100 bg-black flex items-center justify-center">
+      <video
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        tabIndex={-1}
+        className="w-full h-full object-cover rounded-2xl"
+        controlsList="nodownload"
+        disablePictureInPicture
+      />
+      <button
+        onClick={handlePlayPause}
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-blue-700 transition"
+        style={{ zIndex: 2 }}
+      >
+        {isPlaying ? "Pause" : "Play"}
+      </button>
+    </div>
+  );
+};
+
 const TarajiFoundation = () => (
   <div className="App bg-gray-50">
     <Navigation currentSection={"taraji-foundations"} />
@@ -643,20 +693,14 @@ const TarajiFoundation = () => (
       </div>
       {/* Videos after images */}
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <video
-          controls
-          className="rounded-2xl shadow-2xl w-full h-96 object-cover border-4 border-blue-100"
-        >
-          <source src={foundationVid1} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <video
-          controls
-          className="rounded-2xl shadow-2xl w-full h-96 object-cover border-4 border-blue-100"
-        >
-          <source src={foundationVid2} type="video/mp4" />
-          Your browser does not support the video tag...
-        </video>
+        <CustomVideoPlayer
+          src={foundationVid1}
+          alt="Taraji Foundation Video 1"
+        />
+        <CustomVideoPlayer
+          src={foundationVid2}
+          alt="Taraji Foundation Video 2"
+        />
       </div>
     </div>
     <Footer />
