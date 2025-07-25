@@ -930,7 +930,7 @@ const TeamSection = () => {
     },
     {
       name: "Nicholas Bwalley",
-      role: "SOFTWARE ENGINEER & WEBSITE DEVELOPER",
+      role: "IT ENGINEER & WEBSITE DEVELOPER",
       image: nickImg,
       whatsapp: "+254 714 394 332",
       linkedin: "https://www.linkedin.com/in/nick-bwalley-49220a269/",
