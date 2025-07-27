@@ -550,6 +550,7 @@ const TarajiHealthCare = () => (
   <div className="App bg-gray-50">
     <Navigation currentSection={"taraji-healthcare"} />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
+      {/* 1. Header */}
       <h1 className="text-4xl font-bold text-blue-700 mb-6">
         Taraji Health Care
       </h1>
@@ -557,21 +558,11 @@ const TarajiHealthCare = () => (
         Providing Quality and Affordable Healthcare throughout Africa with a
         vision for social and economic balance within the Community.
       </p>
-      <SDGList sdgs={SDGS.healthcare} />
-      {/* Download Presentation Button */}
-      <div className="my-8 flex justify-start">
-        <a
-          href={tarajiHealthcarePresentation}
-          download
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-gradient-to-r from-blue-500 to-green-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
-        >
-          Download & View Our Presentation
-        </a>
-      </div>
 
-      {/* Generator Equipment Section */}
+      {/* 2. SDGs */}
+      <SDGList sdgs={SDGS.healthcare} />
+
+      {/* 3. Equipment Showcase */}
       <div className="mt-12 mb-12">
         <h2 className="text-3xl font-bold text-blue-700 mb-8 text-center">
           Our Medical Equipment
@@ -621,7 +612,7 @@ const TarajiHealthCare = () => (
         </div>
       </div>
 
-      {/* Video Section */}
+      {/* 4. Media Content */}
       <div className="mt-12 flex justify-center">
         <video
           controls
@@ -637,6 +628,27 @@ const TarajiHealthCare = () => (
           alt="Oxyworld PSA Healthcare"
           className="rounded-2xl shadow-2xl max-w-xl w-full object-cover border-4 border-blue-100"
         />
+      </div>
+
+      {/* 5. Action Buttons */}
+      <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href={tarajiHealthcarePresentation}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-green-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-center"
+        >
+          View our Healthcare Equipment
+        </a>
+        <a
+          href={tarajiHealthcarePresentation}
+          download
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-gradient-to-r from-blue-500 to-green-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-center"
+        >
+          Download & View Our Presentation
+        </a>
       </div>
     </div>
     <ContactSection
