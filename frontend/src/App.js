@@ -40,6 +40,7 @@ import maxInternationalLogo from "./assets/our-partners/max-international.png";
 import tarajiEnergyBusinessPlan from "./assets/taraji-sunlux-energy/taraji-energy-business-plan.pdf";
 import tarajiHealthcareVideo from "./assets/taraji-healthcare/taraji-healthcare-v1.mp4";
 import tarajiHealthcarePresentation from "./assets/taraji-healthcare/taraji-healthcare-presentation.pdf";
+import tarajiHealthcarePresentation2 from "./assets/taraji-healthcare/Oxyworld_Healthcare_Equipment_Presentation1.pptx";
 import oxygenGenerator from "./assets/taraji-healthcare/oxygen-generator.png";
 import nitrogenGenerator from "./assets/taraji-healthcare/nitrogen-generator.png";
 
@@ -633,7 +634,7 @@ const TarajiHealthCare = () => (
       {/* 5. Action Buttons */}
       <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
         <a
-          href={tarajiHealthcarePresentation}
+          href={tarajiHealthcarePresentation2}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-green-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-center"
