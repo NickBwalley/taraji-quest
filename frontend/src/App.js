@@ -23,7 +23,7 @@ import tarajiAgri5 from "./assets/taraji-agri/taraji-agri-5.jpg";
 import tarajiAgri6 from "./assets/taraji-agri/taraji-agri-6.jpg";
 import tarajiAgri8 from "./assets/taraji-agri/taraji-agri-8.jpg";
 import tarajiAgri9 from "./assets/taraji-agri/taraji-agri-9.jpg";
-import tarajiAgriVideo from "./assets/taraji-agri/taraji-agri-1.mp4";
+import tarajiAgriVideo from "./assets/taraji-agri/taraji-agri1.mp4";
 import oxyworldPsaImg1 from "./assets/taraji-healthcare/oxyworld-psa-img1.png";
 import sunlux1 from "./assets/taraji-sunlux-energy/taraji-sunlux-energy-1.jpg";
 import sunlux2 from "./assets/taraji-sunlux-energy/taraji-sunlux-energy-2.jpg";
