@@ -40,6 +40,8 @@ import maxInternationalLogo from "./assets/our-partners/max-international.png";
 import tarajiEnergyBusinessPlan from "./assets/taraji-sunlux-energy/taraji-energy-business-plan.pdf";
 import tarajiHealthcareVideo from "./assets/taraji-healthcare/taraji-healthcare-v1.mp4";
 import tarajiHealthcarePresentation from "./assets/taraji-healthcare/taraji-healthcare-presentation.pdf";
+import oxygenGenerator from "./assets/taraji-healthcare/oxygen-generator.png";
+import nitrogenGenerator from "./assets/taraji-healthcare/nitrogen-generator.png";
 
 // ScrollToTop component for route changes
 function ScrollToTop() {
@@ -497,6 +499,57 @@ const TarajiHealthCare = () => (
           Download & View Our Presentation
         </a>
       </div>
+
+      {/* Generator Equipment Section */}
+      <div className="mt-12 mb-12">
+        <h2 className="text-3xl font-bold text-blue-700 mb-8 text-center">
+          Our Medical Equipment
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Oxygen Generator Card */}
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+            <div className="p-6">
+              <h3 className="text-2xl font-bold text-blue-700 mb-4 text-center">
+                Oxygen Generator
+              </h3>
+              <div className="relative overflow-hidden rounded-xl mb-4">
+                <img
+                  src={oxygenGenerator}
+                  alt="Oxygen Generator"
+                  className="w-full h-64 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+              </div>
+              <p className="text-gray-600 text-center leading-relaxed">
+                Advanced oxygen generation technology providing reliable and
+                pure oxygen supply for medical facilities.
+              </p>
+            </div>
+          </div>
+
+          {/* Nitrogen Generator Card */}
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+            <div className="p-6">
+              <h3 className="text-2xl font-bold text-blue-700 mb-4 text-center">
+                Nitrogen Generator
+              </h3>
+              <div className="relative overflow-hidden rounded-xl mb-4">
+                <img
+                  src={nitrogenGenerator}
+                  alt="Nitrogen Generator"
+                  className="w-full h-64 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+              </div>
+              <p className="text-gray-600 text-center leading-relaxed">
+                High-quality nitrogen generation system for medical applications
+                and laboratory use.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Video Section */}
       <div className="mt-12 flex justify-center">
         <video
