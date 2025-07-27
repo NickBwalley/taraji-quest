@@ -40,9 +40,22 @@ import maxInternationalLogo from "./assets/our-partners/max-international.png";
 import tarajiEnergyBusinessPlan from "./assets/taraji-sunlux-energy/taraji-energy-business-plan.pdf";
 import tarajiHealthcareVideo from "./assets/taraji-healthcare/taraji-healthcare-v1.mp4";
 import tarajiHealthcarePresentation from "./assets/taraji-healthcare/taraji-healthcare-presentation.pdf";
-import tarajiHealthcarePresentation2 from "./assets/taraji-healthcare/Oxyworld_Healthcare_Equipment_Presentation1.pptx";
 import oxygenGenerator from "./assets/taraji-healthcare/oxygen-generator.png";
 import nitrogenGenerator from "./assets/taraji-healthcare/nitrogen-generator.png";
+import cyrogenicTanks from "./assets/taraji-healthcare/cyrogenic-tanks.png";
+import bsAndDnSockets from "./assets/taraji-healthcare/bs-and-dn-sockets.png";
+import modularSocketBoxes from "./assets/taraji-healthcare/modular-socket-boxes.png";
+import centralVacuumApparatus from "./assets/taraji-healthcare/central-vaccum-apparatus.png";
+import flowMeter from "./assets/taraji-healthcare/flow-meter.png";
+import regulator from "./assets/taraji-healthcare/regulator.png";
+import pendants from "./assets/taraji-healthcare/pendants.png";
+import pendants2 from "./assets/taraji-healthcare/pendants2.png";
+import pendants3 from "./assets/taraji-healthcare/pendants3.png";
+import pendants4 from "./assets/taraji-healthcare/pendants4.png";
+import pendants5 from "./assets/taraji-healthcare/pendants5.png";
+import modularSocketBoxes2 from "./assets/taraji-healthcare/modular-socket-boxes2.png";
+import nurseCallSystems from "./assets/taraji-healthcare/nurse-call-systems.png";
+import bedsideCallPanel from "./assets/taraji-healthcare/bedside-call-panel.png";
 
 // ScrollToTop component for route changes
 function ScrollToTop() {
@@ -532,6 +545,58 @@ const SDGS = {
   ],
 };
 
+// Image Popup Component
+const ImagePopup = ({ isOpen, onClose, title, images }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+        {/* Header */}
+        <div className="flex justify-between items-center p-6 border-b border-gray-200">
+          <h3 className="text-2xl font-bold text-blue-700">{title}</h3>
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700 transition-colors duration-200"
+          >
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Image Gallery */}
+        <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className="bg-gray-50 rounded-xl overflow-hidden"
+              >
+                <img
+                  src={image}
+                  alt={`${title} ${index + 1}`}
+                  className="w-full h-64 object-contain bg-white"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // SDG List Component
 const SDGList = ({ sdgs }) => (
   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 mt-8">
@@ -547,125 +612,301 @@ const SDGList = ({ sdgs }) => (
 );
 
 // New Pages
-const TarajiHealthCare = () => (
-  <div className="App bg-gray-50">
-    <Navigation currentSection={"taraji-healthcare"} />
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
-      {/* 1. Header */}
-      <h1 className="text-4xl font-bold text-blue-700 mb-6">
-        Taraji Health Care
-      </h1>
-      <p className="mb-4 text-lg text-gray-700">
-        Providing Quality and Affordable Healthcare throughout Africa with a
-        vision for social and economic balance within the Community.
-      </p>
+const TarajiHealthCare = () => {
+  const [isPendantsPopupOpen, setIsPendantsPopupOpen] = useState(false);
+  const [isModularSocketBoxesPopupOpen, setIsModularSocketBoxesPopupOpen] =
+    useState(false);
 
-      {/* 2. SDGs */}
-      <SDGList sdgs={SDGS.healthcare} />
+  const pendantsImages = [pendants, pendants2, pendants3, pendants4, pendants5];
+  const modularSocketBoxesImages = [modularSocketBoxes, modularSocketBoxes2];
 
-      {/* 3. Equipment Showcase */}
-      <div className="mt-12 mb-12">
-        <h2 className="text-3xl font-bold text-blue-700 mb-8 text-center">
-          Our Medical Equipment
-        </h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Oxygen Generator Card */}
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-            <div className="p-6">
-              <h3 className="text-2xl font-bold text-blue-700 mb-4 text-center">
-                Oxygen Generator
-              </h3>
-              <div className="relative overflow-hidden rounded-xl mb-4">
-                <img
-                  src={oxygenGenerator}
-                  alt="Oxygen Generator"
-                  className="w-full h-64 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+  return (
+    <div className="App bg-gray-50">
+      <Navigation currentSection={"taraji-healthcare"} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
+        {/* 1. Header */}
+        <h1 className="text-4xl font-bold text-blue-700 mb-6">
+          Taraji Health Care
+        </h1>
+        <p className="mb-4 text-lg text-gray-700">
+          Providing Quality and Affordable Healthcare throughout Africa with a
+          vision for social and economic balance within the Community.
+        </p>
+
+        {/* 2. SDGs */}
+        <SDGList sdgs={SDGS.healthcare} />
+
+        {/* 3. Equipment Showcase */}
+        <div className="mt-12 mb-12">
+          <h2 className="text-3xl font-bold text-blue-700 mb-8 text-center">
+            Our Medical Equipment
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* 1. Oxygen Generator Card */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
+                  Oxygen Generator
+                </h3>
+                <div className="relative overflow-hidden rounded-xl">
+                  <img
+                    src={oxygenGenerator}
+                    alt="Oxygen Generator"
+                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+                </div>
               </div>
-              <p className="text-gray-600 text-center leading-relaxed">
-                Advanced oxygen generation technology providing reliable and
-                pure oxygen supply for medical facilities.
-              </p>
             </div>
-          </div>
 
-          {/* Nitrogen Generator Card */}
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-            <div className="p-6">
-              <h3 className="text-2xl font-bold text-blue-700 mb-4 text-center">
-                Nitrogen Generator
-              </h3>
-              <div className="relative overflow-hidden rounded-xl mb-4">
-                <img
-                  src={nitrogenGenerator}
-                  alt="Nitrogen Generator"
-                  className="w-full h-64 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+            {/* 2. Nitrogen Generator Card */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
+                  Nitrogen Generator
+                </h3>
+                <div className="relative overflow-hidden rounded-xl">
+                  <img
+                    src={nitrogenGenerator}
+                    alt="Nitrogen Generator"
+                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+                </div>
               </div>
-              <p className="text-gray-600 text-center leading-relaxed">
-                High-quality nitrogen generation system for medical applications
-                and laboratory use.
-              </p>
+            </div>
+
+            {/* 3. Cyrogenic Tanks Card */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
+                  Cyrogenic Tanks
+                </h3>
+                <div className="relative overflow-hidden rounded-xl">
+                  <img
+                    src={cyrogenicTanks}
+                    alt="Cyrogenic Tanks"
+                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* 4. BS & DN Gas Sockets Card */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
+                  BS & DN Gas Sockets
+                </h3>
+                <div className="relative overflow-hidden rounded-xl">
+                  <img
+                    src={bsAndDnSockets}
+                    alt="BS & DN Gas Sockets"
+                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* 5. Modular Socket Boxes Card */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
+                  Modular Socket Boxes
+                </h3>
+                <div className="relative overflow-hidden rounded-xl">
+                  <img
+                    src={modularSocketBoxes}
+                    alt="Modular Socket Boxes"
+                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+                </div>
+                <div className="mt-4 text-center">
+                  <button
+                    onClick={() => setIsModularSocketBoxesPopupOpen(true)}
+                    className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:from-blue-600 hover:to-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  >
+                    View More Images
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* 6. Central Vacuum Apparatus Card */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
+                  Central Vacuum Apparatus
+                </h3>
+                <div className="relative overflow-hidden rounded-xl">
+                  <img
+                    src={centralVacuumApparatus}
+                    alt="Central Vacuum Apparatus"
+                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* 7. Flow Meter Card */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
+                  Flow Meter
+                </h3>
+                <div className="relative overflow-hidden rounded-xl">
+                  <img
+                    src={flowMeter}
+                    alt="Flow Meter"
+                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* 8. Regulator Card */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
+                  Regulator
+                </h3>
+                <div className="relative overflow-hidden rounded-xl">
+                  <img
+                    src={regulator}
+                    alt="Regulator"
+                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* 9. Pendants Card */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
+                  Pendants
+                </h3>
+                <div className="relative overflow-hidden rounded-xl">
+                  <img
+                    src={pendants}
+                    alt="Pendants"
+                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+                </div>
+                <div className="mt-4 text-center">
+                  <button
+                    onClick={() => setIsPendantsPopupOpen(true)}
+                    className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:from-blue-600 hover:to-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  >
+                    View More Images
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* 10. Nurse Call Systems Card */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
+                  Nurse Call Systems
+                </h3>
+                <div className="relative overflow-hidden rounded-xl">
+                  <img
+                    src={nurseCallSystems}
+                    alt="Nurse Call Systems"
+                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* 11. Bedside Call Panels Card */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
+                  Bedside Call Panels
+                </h3>
+                <div className="relative overflow-hidden rounded-xl">
+                  <img
+                    src={bedsideCallPanel}
+                    alt="Bedside Call Panels"
+                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* 4. Media Content */}
-      <div className="mt-12 flex justify-center">
-        <video
-          controls
-          className="rounded-2xl shadow-2xl max-w-2xl w-full border-4 border-blue-100"
-        >
-          <source src={tarajiHealthcareVideo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div className="mt-12 flex justify-center">
+        {/* 4. Media Content */}
+        <div className="mt-12 flex justify-center">
+          <video
+            controls
+            className="rounded-2xl shadow-2xl max-w-2xl w-full border-4 border-blue-100"
+          >
+            <source src={tarajiHealthcareVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        {/* <div className="mt-12 flex justify-center">
         <img
           src={oxyworldPsaImg1}
           alt="Oxyworld PSA Healthcare"
           className="rounded-2xl shadow-2xl max-w-xl w-full object-cover border-4 border-blue-100"
         />
-      </div>
+      </div> */}
 
-      {/* 5. Action Buttons */}
-      <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href={tarajiHealthcarePresentation2}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-green-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-center"
-        >
-          View our Healthcare Equipment
-        </a>
-        <a
-          href={tarajiHealthcarePresentation}
-          download
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-gradient-to-r from-blue-500 to-green-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-center"
-        >
-          Download & View Our Presentation
-        </a>
+        {/* 5. Action Buttons */}
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href={tarajiHealthcarePresentation}
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-gradient-to-r from-blue-500 to-green-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-center"
+          >
+            Download & View Our Presentation
+          </a>
+        </div>
+
+        {/* Image Popups */}
+        <ImagePopup
+          isOpen={isPendantsPopupOpen}
+          onClose={() => setIsPendantsPopupOpen(false)}
+          title="Pendants"
+          images={pendantsImages}
+        />
+        <ImagePopup
+          isOpen={isModularSocketBoxesPopupOpen}
+          onClose={() => setIsModularSocketBoxesPopupOpen(false)}
+          title="Modular Socket Boxes"
+          images={modularSocketBoxesImages}
+        />
       </div>
+      <ContactSection
+        contacts={[
+          {
+            name: "Kathy Awuor",
+            role: "SALES & MARKETING EXECUTIVE",
+            image: kathyImg,
+            whatsapp: "+254 723 453 352",
+            email: "k.awuor@taraji-quest.com",
+          },
+        ]}
+      />
+      <Footer />
     </div>
-    <ContactSection
-      contacts={[
-        {
-          name: "Kathy Awuor",
-          role: "SALES & MARKETING EXECUTIVE",
-          image: kathyImg,
-          whatsapp: "+254 723 453 352",
-          email: "k.awuor@taraji-quest.com",
-        },
-      ]}
-    />
-    <Footer />
-  </div>
-);
+  );
+};
 const TarajiSunluxEnergy = () => (
   <div className="App bg-gray-50">
     <Navigation currentSection={"taraji-sunlux-energy"} />
