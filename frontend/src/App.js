@@ -250,13 +250,7 @@ const Navigation = ({ currentSection }) => {
                     onClick={() => handlePillarNav("/taraji-healthcare")}
                     className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200 cursor-pointer"
                   >
-                    Taraji Health Care
-                  </span>
-                  <span
-                    onClick={() => handlePillarNav("/taraji-foundations")}
-                    className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200 cursor-pointer"
-                  >
-                    Taraji Foundation
+                    Taraji Healthcare
                   </span>
                   <span
                     onClick={() => handlePillarNav("/taraji-sunlux-energy")}
@@ -269,6 +263,12 @@ const Navigation = ({ currentSection }) => {
                     className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200 cursor-pointer"
                   >
                     Taraji Agri
+                  </span>
+                  <span
+                    onClick={() => handlePillarNav("/taraji-foundations")}
+                    className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200 cursor-pointer"
+                  >
+                    Taraji Foundation
                   </span>
                   <span
                     onClick={() => handlePillarNav("/food-beverages")}
@@ -364,13 +364,7 @@ const Navigation = ({ currentSection }) => {
                     onClick={() => handlePillarNav("/taraji-healthcare")}
                     className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
                   >
-                    Taraji Health Care
-                  </span>
-                  <span
-                    onClick={() => handlePillarNav("/taraji-foundations")}
-                    className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
-                  >
-                    Taraji Foundation
+                    Taraji Healthcare
                   </span>
                   <span
                     onClick={() => handlePillarNav("/taraji-sunlux-energy")}
@@ -383,6 +377,12 @@ const Navigation = ({ currentSection }) => {
                     className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
                   >
                     Taraji Agri
+                  </span>
+                  <span
+                    onClick={() => handlePillarNav("/taraji-foundations")}
+                    className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
+                  >
+                    Taraji Foundation
                   </span>
                   <span
                     onClick={() => handlePillarNav("/food-beverages")}
@@ -1117,16 +1117,25 @@ const TarajiFoundation = () => (
           className="rounded-2xl shadow-2xl w-full h-96 object-cover border-4 border-blue-100"
         />
       </div>
-      {/* Videos after images */}
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <CustomVideoPlayer
-          src={foundationVid1}
-          alt="Taraji Foundation Video 1"
-        />
-        <CustomVideoPlayer
-          src={foundationVid2}
-          alt="Taraji Foundation Video 2"
-        />
+      {/* Video with download capability */}
+      <div className="mt-12 flex justify-center">
+        <video
+          controls
+          className="rounded-2xl shadow-2xl max-w-2xl w-full border-4 border-blue-100"
+        >
+          <source src={foundationVid1} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      {/* Video with download capability */}
+      <div className="mt-12 flex justify-center">
+        <video
+          controls
+          className="rounded-2xl shadow-2xl max-w-2xl w-full border-4 border-blue-100"
+        >
+          <source src={foundationVid2} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
     <ContactSection
