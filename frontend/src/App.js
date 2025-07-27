@@ -58,9 +58,28 @@ const Navigation = ({ currentSection }) => {
   const [isPillarsDropdownOpen, setIsPillarsDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const menuRef = React.useRef(null);
 
   // Helper to check if on homepage
   const isHome = location.pathname === "/";
+
+  // Click outside to close menu
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+        setIsPillarsDropdownOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   // Function to handle navigation clicks
   const handleHomeClick = () => {
@@ -70,6 +89,20 @@ const Navigation = ({ currentSection }) => {
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     } else {
       navigate("/");
+    }
+  };
+
+  // Function to handle About click
+  const handleAboutClick = () => {
+    setIsMenuOpen(false);
+    setIsPillarsDropdownOpen(false);
+    if (isHome) {
+      const section = document.getElementById("about");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate("/", { state: { scrollTo: "about" } });
     }
   };
 
@@ -84,6 +117,20 @@ const Navigation = ({ currentSection }) => {
       }
     } else {
       navigate("/", { state: { scrollTo: "team" } });
+    }
+  };
+
+  // Function to handle Partners click
+  const handlePartnersClick = () => {
+    setIsMenuOpen(false);
+    setIsPillarsDropdownOpen(false);
+    if (isHome) {
+      const section = document.getElementById("partners");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate("/", { state: { scrollTo: "partners" } });
     }
   };
 
@@ -145,6 +192,12 @@ const Navigation = ({ currentSection }) => {
               className={`${styles.textClass} hover:text-blue-400 transition-colors duration-300 cursor-pointer`}
             >
               HOME
+            </span>
+            <span
+              onClick={handleAboutClick}
+              className={`${styles.textClass} hover:text-blue-400 transition-colors duration-300 cursor-pointer`}
+            >
+              ABOUT
             </span>
             {/* Pillars Dropdown */}
             <div className="relative group">
@@ -218,6 +271,12 @@ const Navigation = ({ currentSection }) => {
             >
               CONTACT US
             </span>
+            <span
+              onClick={handlePartnersClick}
+              className={`${styles.textClass} hover:text-blue-400 transition-colors duration-300 cursor-pointer`}
+            >
+              OUR PARTNERS
+            </span>
           </div>
 
           {/* Mobile Menu Button */}
@@ -248,12 +307,18 @@ const Navigation = ({ currentSection }) => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className={styles.mobileMenuClass}>
+          <div ref={menuRef} className={styles.mobileMenuClass}>
             <span
               onClick={handleHomeClick}
               className="block py-2 text-white hover:text-blue-400 cursor-pointer"
             >
               HOME
+            </span>
+            <span
+              onClick={handleAboutClick}
+              className="block py-2 text-white hover:text-blue-400 cursor-pointer"
+            >
+              ABOUT
             </span>
             {/* Mobile Pillars Dropdown */}
             <div className="border-t border-white border-opacity-20 mt-2 pt-2">
@@ -319,6 +384,12 @@ const Navigation = ({ currentSection }) => {
               className="block py-2 text-white hover:text-blue-400 cursor-pointer"
             >
               CONTACT US
+            </span>
+            <span
+              onClick={handlePartnersClick}
+              className="block py-2 text-white hover:text-blue-400 cursor-pointer"
+            >
+              OUR PARTNERS
             </span>
           </div>
         )}
@@ -1345,10 +1416,10 @@ function MainApp() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll to team if navigated with state
+  // Scroll to sections if navigated with state
   React.useEffect(() => {
-    if (location.state && location.state.scrollTo === "team") {
-      const section = document.getElementById("team");
+    if (location.state && location.state.scrollTo) {
+      const section = document.getElementById(location.state.scrollTo);
       if (section) {
         setTimeout(() => {
           section.scrollIntoView({ behavior: "smooth" });
