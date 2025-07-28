@@ -28,6 +28,8 @@ import oxyworldPsaImg1 from "./assets/taraji-healthcare/oxyworld-psa-img1.png";
 import sunlux1 from "./assets/taraji-sunlux-energy/taraji-sunlux-energy-1.jpg";
 import sunlux2 from "./assets/taraji-sunlux-energy/taraji-sunlux-energy-2.jpg";
 import sunlux3 from "./assets/taraji-sunlux-energy/taraji-sunlux-energy-3.jpg";
+import sunlux4 from "./assets/taraji-sunlux-energy/taraji-sunlux-energy-4.jpg";
+import sunluxLogo from "./assets/taraji-sunlux-energy/taraji-sunlux-energy-logo.jpg";
 import foundationVid1 from "./assets/taraji-foundation/taraji-foundation-video1.mp4";
 import foundationVid2 from "./assets/taraji-foundation/taraji-foundation-video2.mp4";
 import tarajiAgri2_5 from "./assets/taraji-agri/taraji-agri-2.5.jpg";
@@ -39,6 +41,7 @@ import sunInOneLogo from "./assets/our-partners/sun-in-one-partner.png";
 import maxInternationalLogo from "./assets/our-partners/max-international.png";
 import tarajiEnergyBusinessPlan from "./assets/taraji-sunlux-energy/taraji-energy-business-plan.pdf";
 import tarajiHealthcareVideo from "./assets/taraji-healthcare/taraji-healthcare-v1.mp4";
+import tarajiHealthcareVideo2 from "./assets/taraji-healthcare/taraji-healthcare-video2.mp4";
 import tarajiHealthcarePresentation from "./assets/taraji-healthcare/taraji-healthcare-presentation.pdf";
 import oxygenGenerator from "./assets/taraji-healthcare/oxygen-generator.png";
 import nitrogenGenerator from "./assets/taraji-healthcare/nitrogen-generator.png";
@@ -857,6 +860,15 @@ const TarajiHealthCare = () => {
             Your browser does not support the video tag.
           </video>
         </div>
+        <div className="mt-12 flex justify-center">
+          <video
+            controls
+            className="rounded-2xl shadow-2xl max-w-2xl w-full border-4 border-blue-100"
+          >
+            <source src={tarajiHealthcareVideo2} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
         {/* <div className="mt-12 flex justify-center">
         <img
           src={oxyworldPsaImg1}
@@ -931,7 +943,7 @@ const TarajiSunluxEnergy = () => (
           Download & View Our Business Plan
         </a>
       </div>
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <img
           src={sunlux1}
           alt="Sunlux Energy 1"
@@ -946,6 +958,11 @@ const TarajiSunluxEnergy = () => (
         <img
           src={sunlux3}
           alt="Sunlux Energy 3"
+          className="rounded-xl shadow-lg object-cover w-full h-64"
+        />
+        <img
+          src={sunlux4}
+          alt="Sunlux Energy 4"
           className="rounded-xl shadow-lg object-cover w-full h-64"
         />
       </div>
@@ -1208,7 +1225,7 @@ const ServicesSection = () => {
       title: "Taraji Sunlux Energy",
       description:
         "Providing Quality Renewable Energy and Technology through renewable energy such as solar bio-fuel among other solutions.",
-      image: sunlux1,
+      image: sunluxLogo,
       gradient: "from-green-500 to-emerald-500",
       link: "/taraji-sunlux-energy",
     },
