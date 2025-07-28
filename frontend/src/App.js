@@ -59,6 +59,39 @@ import pendants5 from "./assets/taraji-healthcare/pendants5.png";
 import modularSocketBoxes2 from "./assets/taraji-healthcare/modular-socket-boxes2.png";
 import nurseCallSystems from "./assets/taraji-healthcare/nurse-call-systems.png";
 import bedsideCallPanel from "./assets/taraji-healthcare/bedside-call-panel.png";
+import blackCapBloodCollectionTube from "./assets/taraji-healthcare/black-cap-blood-collection-tube.png";
+import blackCapBloodCollectionTube2 from "./assets/taraji-healthcare/black-cap-blood-collection-tube2.png";
+import negativePressureWoundCareSystem from "./assets/taraji-healthcare/negative-pressure-wound-care-system.png";
+import vaccumPlant from "./assets/taraji-healthcare/vaccum-plant.png";
+import regionalGasControlUnit from "./assets/taraji-healthcare/regional-gas-control-unit.png";
+import pressureSensor from "./assets/taraji-healthcare/pressure-sensor.png";
+import medicalDryAirPlant from "./assets/taraji-healthcare/medical-dry-air-plant.png";
+import gasBallValves from "./assets/taraji-healthcare/gas-ball-valves.png";
+import digitalAlarms from "./assets/taraji-healthcare/digital-alarms.png";
+import changeOver from "./assets/taraji-healthcare/change-over.png";
+import centralAlarmPanel from "./assets/taraji-healthcare/central-alarm-panel.png";
+import anaesthesiaMedicalGasEvacuation from "./assets/taraji-healthcare/anaesthesia-medical-gas-evacuation.png";
+import threeChannelAndTwoLampRailType from "./assets/taraji-healthcare/3-channel-and-2lamp-rail-type.png";
+import hTypeIntensiveType from "./assets/taraji-healthcare/h-type-intensive-type.png";
+import patientsBedHeadsColumnType from "./assets/taraji-healthcare/patients-bed-heads-column-type.png";
+import pneumaticConveyingSystems from "./assets/taraji-healthcare/pneumatic-conveying-systems.png";
+import uvcGermicidalLamps from "./assets/taraji-healthcare/UVC-germicidal-lamps.png";
+import stainlessSteelObservation from "./assets/taraji-healthcare/stainless-steel-observation.png";
+import stainlessSteelCarrySystem from "./assets/taraji-healthcare/stainless-steel-carry-system.png";
+import stainlessSteelHandwashing from "./assets/taraji-healthcare/stainless-steel-handwashing.png";
+import hydraulicStool from "./assets/taraji-healthcare/hydraulic-stool.png";
+import bathroomEmergencyCallunit from "./assets/taraji-healthcare/bathroom-emergency-callunit.png";
+import patientHandcallButton from "./assets/taraji-healthcare/patient-handcall-button.png";
+import mainDisplayUnit from "./assets/taraji-healthcare/main-display-unit.png";
+import hospitalCallCenterServer from "./assets/taraji-healthcare/hospital-call-center-server.png";
+import doorTopWarningLight from "./assets/taraji-healthcare/door-top-warning-light.png";
+import digitalManagementInterface from "./assets/taraji-healthcare/digital-management-interface.png";
+import desktopTicketMachine from "./assets/taraji-healthcare/desktop-ticket-machine.png";
+import consoleTicketUnit from "./assets/taraji-healthcare/console-ticket-unit.png";
+import tarajiFoodsAndBeveragesLogo from "./assets/taraji-foods-and-beverages/taraji-food-and-beverages-logo.jpg";
+import foodAndBeverageImg1 from "./assets/taraji-foods-and-beverages/food-and-beverage-img1.jpg";
+import foodAndBeverageImg2 from "./assets/taraji-foods-and-beverages/food-and-beverage-img2.jpg";
+import tarajiFoundationLogo from "./assets/taraji-healthcare/taraji-foundation-logo.jpg";
 
 // ScrollToTop component for route changes
 function ScrollToTop() {
@@ -80,7 +113,7 @@ const Navigation = ({ currentSection }) => {
   // Helper to check if on homepage
   const isHome = location.pathname === "/";
 
-  // Click outside to close menu
+  // Click outside to close menu and dropdown
   React.useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -89,14 +122,15 @@ const Navigation = ({ currentSection }) => {
       }
     };
 
-    if (isMenuOpen) {
+    // Add event listener for both mobile menu and desktop dropdown
+    if (isMenuOpen || isPillarsDropdownOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isPillarsDropdownOpen]);
 
   // Function to handle navigation clicks
   const handleHomeClick = () => {
@@ -265,7 +299,7 @@ const Navigation = ({ currentSection }) => {
                     onClick={() => handlePillarNav("/taraji-agri")}
                     className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200 cursor-pointer"
                   >
-                    Taraji Agri
+                    Taraji Farms
                   </span>
                   <span
                     onClick={() => handlePillarNav("/taraji-foundations")}
@@ -379,7 +413,7 @@ const Navigation = ({ currentSection }) => {
                     onClick={() => handlePillarNav("/taraji-agri")}
                     className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
                   >
-                    Taraji Agri
+                    Taraji Farms
                   </span>
                   <span
                     onClick={() => handlePillarNav("/taraji-foundations")}
@@ -619,9 +653,247 @@ const TarajiHealthCare = () => {
   const [isPendantsPopupOpen, setIsPendantsPopupOpen] = useState(false);
   const [isModularSocketBoxesPopupOpen, setIsModularSocketBoxesPopupOpen] =
     useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isFullScreenOpen, setIsFullScreenOpen] = useState(false);
+  const [fullScreenImage, setFullScreenImage] = useState(null);
+  const [fullScreenTitle, setFullScreenTitle] = useState("");
 
   const pendantsImages = [pendants, pendants2, pendants3, pendants4, pendants5];
   const modularSocketBoxesImages = [modularSocketBoxes, modularSocketBoxes2];
+
+  // Equipment data array
+  const equipmentData = [
+    {
+      title: "Oxygen Generator",
+      image: oxygenGenerator,
+    },
+    {
+      title: "Nitrogen Generator",
+      image: nitrogenGenerator,
+    },
+    {
+      title: "Cyrogenic Tanks",
+      image: cyrogenicTanks,
+    },
+    {
+      title: "BS & DN Gas Sockets",
+      image: bsAndDnSockets,
+    },
+    {
+      title: "Modular Socket Boxes",
+      image: modularSocketBoxes,
+    },
+    {
+      title: "Central Vacuum Apparatus",
+      image: centralVacuumApparatus,
+    },
+    {
+      title: "Flow Meter",
+      image: flowMeter,
+    },
+    {
+      title: "Regulator",
+      image: regulator,
+    },
+    {
+      title: "Pendants",
+      image: pendants,
+    },
+    {
+      title: "Nurse Call Systems",
+      image: nurseCallSystems,
+    },
+    {
+      title: "Bedside Call Panels",
+      image: bedsideCallPanel,
+    },
+    {
+      title: "Black Cap Blood Collection Tube",
+      image: blackCapBloodCollectionTube,
+    },
+    {
+      title: "Black Cap Blood Collection Tube 2",
+      image: blackCapBloodCollectionTube2,
+    },
+    {
+      title: "Negative Pressure Wound Care System",
+      image: negativePressureWoundCareSystem,
+    },
+    {
+      title: "Vacuum Plant",
+      image: vaccumPlant,
+    },
+    {
+      title: "Regional Gas Control Unit",
+      image: regionalGasControlUnit,
+    },
+    {
+      title: "Pressure Sensor",
+      image: pressureSensor,
+    },
+    {
+      title: "Medical Dry Air Plant",
+      image: medicalDryAirPlant,
+    },
+    {
+      title: "Gas Ball Valves",
+      image: gasBallValves,
+    },
+    {
+      title: "Digital Alarms",
+      image: digitalAlarms,
+    },
+    {
+      title: "Change Over",
+      image: changeOver,
+    },
+    {
+      title: "Central Alarm Panel",
+      image: centralAlarmPanel,
+    },
+    {
+      title: "Anaesthesia Medical Gas Evacuation",
+      image: anaesthesiaMedicalGasEvacuation,
+    },
+    {
+      title: "3 Channel and 2 Lamp Rail Type",
+      image: threeChannelAndTwoLampRailType,
+    },
+    {
+      title: "H Type Intensive Type",
+      image: hTypeIntensiveType,
+    },
+    {
+      title: "Patients Bed Heads Column Type",
+      image: patientsBedHeadsColumnType,
+    },
+    {
+      title: "Pneumatic Conveying Systems",
+      image: pneumaticConveyingSystems,
+    },
+    {
+      title: "UVC Germicidal Lamps",
+      image: uvcGermicidalLamps,
+    },
+    {
+      title: "Stainless Steel Observation",
+      image: stainlessSteelObservation,
+    },
+    {
+      title: "Stainless Steel Carry System",
+      image: stainlessSteelCarrySystem,
+    },
+    {
+      title: "Stainless Steel Handwashing",
+      image: stainlessSteelHandwashing,
+    },
+    {
+      title: "Hydraulic Stool",
+      image: hydraulicStool,
+    },
+    {
+      title: "Bathroom Emergency Call Unit",
+      image: bathroomEmergencyCallunit,
+    },
+    {
+      title: "Patient Handcall Button",
+      image: patientHandcallButton,
+    },
+    {
+      title: "Main Display Unit",
+      image: mainDisplayUnit,
+    },
+    {
+      title: "Hospital Call Center Server",
+      image: hospitalCallCenterServer,
+    },
+    {
+      title: "Door Top Warning Light",
+      image: doorTopWarningLight,
+    },
+    {
+      title: "Digital Management Interface",
+      image: digitalManagementInterface,
+    },
+    {
+      title: "Desktop Ticket Machine",
+      image: desktopTicketMachine,
+    },
+    {
+      title: "Console Ticket Unit",
+      image: consoleTicketUnit,
+    },
+  ];
+
+  // Auto-slide functionality
+  React.useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === equipmentData.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, equipmentData.length]);
+
+  // Keyboard navigation
+  React.useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (isFullScreenOpen) {
+        if (event.key === "Escape") {
+          handleFullScreenClose();
+        }
+      } else {
+        switch (event.key) {
+          case "ArrowLeft":
+            goToPrevious();
+            break;
+          case "ArrowRight":
+            goToNext();
+            break;
+          default:
+            break;
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [isFullScreenOpen]);
+
+  // Handle image click
+  const handleImageClick = (image, title) => {
+    setFullScreenImage(image);
+    setFullScreenTitle(title);
+    setIsFullScreenOpen(true);
+    setIsAutoPlaying(false);
+  };
+
+  // Handle full screen close
+  const handleFullScreenClose = () => {
+    setIsFullScreenOpen(false);
+    setIsAutoPlaying(true);
+  };
+
+  // Navigation functions
+  const goToPrevious = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? equipmentData.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNext = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === equipmentData.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const goToImage = (index) => {
+    setCurrentImageIndex(index);
+  };
 
   return (
     <div className="App bg-gray-50">
@@ -639,218 +911,154 @@ const TarajiHealthCare = () => {
         {/* 2. SDGs */}
         <SDGList sdgs={SDGS.healthcare} />
 
-        {/* 3. Equipment Showcase */}
+        {/* 3. Equipment Showcase - Carousel */}
         <div className="mt-12 mb-12">
           <h2 className="text-3xl font-bold text-blue-700 mb-8 text-center">
             Our Medical Equipment
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* 1. Oxygen Generator Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
-                  Oxygen Generator
-                </h3>
-                <div className="relative overflow-hidden rounded-xl">
-                  <img
-                    src={oxygenGenerator}
-                    alt="Oxygen Generator"
-                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
-                </div>
-              </div>
-            </div>
 
-            {/* 2. Nitrogen Generator Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
-                  Nitrogen Generator
-                </h3>
-                <div className="relative overflow-hidden rounded-xl">
-                  <img
-                    src={nitrogenGenerator}
-                    alt="Nitrogen Generator"
-                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
-                </div>
-              </div>
-            </div>
+          {/* Carousel Container */}
+          <div className="relative max-w-4xl mx-auto">
+            {/* Main Image Display */}
+            <div className="relative bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-blue-100">
+              <div className="relative h-96 md:h-[500px]">
+                <img
+                  key={currentImageIndex}
+                  src={equipmentData[currentImageIndex].image}
+                  alt={equipmentData[currentImageIndex].title}
+                  className="w-full h-full object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-all duration-700 ease-in-out cursor-pointer animate-fadeIn"
+                  onClick={() =>
+                    handleImageClick(
+                      equipmentData[currentImageIndex].image,
+                      equipmentData[currentImageIndex].title
+                    )
+                  }
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
 
-            {/* 3. Cyrogenic Tanks Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
-                  Cyrogenic Tanks
-                </h3>
-                <div className="relative overflow-hidden rounded-xl">
-                  <img
-                    src={cyrogenicTanks}
-                    alt="Cyrogenic Tanks"
-                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
-                </div>
-              </div>
-            </div>
-
-            {/* 4. BS & DN Gas Sockets Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
-                  BS & DN Gas Sockets
-                </h3>
-                <div className="relative overflow-hidden rounded-xl">
-                  <img
-                    src={bsAndDnSockets}
-                    alt="BS & DN Gas Sockets"
-                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
-                </div>
-              </div>
-            </div>
-
-            {/* 5. Modular Socket Boxes Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
-                  Modular Socket Boxes
-                </h3>
-                <div className="relative overflow-hidden rounded-xl">
-                  <img
-                    src={modularSocketBoxes}
-                    alt="Modular Socket Boxes"
-                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
-                </div>
-                <div className="mt-4 text-center">
-                  <button
-                    onClick={() => setIsModularSocketBoxesPopupOpen(true)}
-                    className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:from-blue-600 hover:to-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                {/* Image Title Overlay */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                  <h3
+                    key={currentImageIndex}
+                    className="text-white text-xl md:text-2xl font-bold text-center animate-fadeIn"
                   >
-                    View More Images
-                  </button>
+                    {equipmentData[currentImageIndex].title}
+                  </h3>
                 </div>
               </div>
             </div>
 
-            {/* 6. Central Vacuum Apparatus Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
-                  Central Vacuum Apparatus
-                </h3>
-                <div className="relative overflow-hidden rounded-xl">
-                  <img
-                    src={centralVacuumApparatus}
-                    alt="Central Vacuum Apparatus"
-                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
-                </div>
-              </div>
-            </div>
+            {/* Navigation Arrows */}
+            <button
+              onClick={goToPrevious}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-blue-700 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10"
+              aria-label="Previous image"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
 
-            {/* 7. Flow Meter Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
-                  Flow Meter
-                </h3>
-                <div className="relative overflow-hidden rounded-xl">
-                  <img
-                    src={flowMeter}
-                    alt="Flow Meter"
-                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
-                </div>
-              </div>
-            </div>
+            <button
+              onClick={goToNext}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-blue-700 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10"
+              aria-label="Next image"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
 
-            {/* 8. Regulator Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
-                  Regulator
-                </h3>
-                <div className="relative overflow-hidden rounded-xl">
-                  <img
-                    src={regulator}
-                    alt="Regulator"
-                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
-                </div>
-              </div>
-            </div>
-
-            {/* 9. Pendants Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
-                  Pendants
-                </h3>
-                <div className="relative overflow-hidden rounded-xl">
-                  <img
-                    src={pendants}
-                    alt="Pendants"
-                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
-                </div>
-                <div className="mt-4 text-center">
-                  <button
-                    onClick={() => setIsPendantsPopupOpen(true)}
-                    className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:from-blue-600 hover:to-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
-                  >
-                    View More Images
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* 10. Nurse Call Systems Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
-                  Nurse Call Systems
-                </h3>
-                <div className="relative overflow-hidden rounded-xl">
-                  <img
-                    src={nurseCallSystems}
-                    alt="Nurse Call Systems"
-                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
-                </div>
-              </div>
-            </div>
-
-            {/* 11. Bedside Call Panels Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-blue-100">
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
-                  Bedside Call Panels
-                </h3>
-                <div className="relative overflow-hidden rounded-xl">
-                  <img
-                    src={bedsideCallPanel}
-                    alt="Bedside Call Panels"
-                    className="w-full h-48 object-contain bg-gradient-to-br from-blue-50 to-green-50 transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"></div>
-                </div>
-              </div>
+            {/* Progress Indicators */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {equipmentData.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToImage(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentImageIndex
+                      ? "bg-blue-600 scale-125"
+                      : "bg-gray-300 hover:bg-gray-400"
+                  }`}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>
 
-        {/* 4. Media Content */}
+        {/* 4. Full Screen Modal */}
+        {isFullScreenOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50 p-4">
+            <div className="relative max-w-7xl max-h-[95vh] w-full h-full flex flex-col">
+              {/* Close Button */}
+              <button
+                onClick={handleFullScreenClose}
+                className="absolute top-6 right-6 z-10 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+                aria-label="Close full screen"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+
+              {/* Equipment Title */}
+              <div className="text-center mb-6">
+                <h2 className="text-white text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+                  {fullScreenTitle}
+                </h2>
+              </div>
+
+              {/* Image Container */}
+              <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8">
+                <img
+                  src={fullScreenImage}
+                  alt={fullScreenTitle}
+                  className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+                />
+              </div>
+
+              {/* Equipment Description */}
+              <div className="text-center mt-6">
+                <p className="text-white/80 text-lg md:text-xl">
+                  Medical Equipment - Taraji Healthcare
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 5. Media Content */}
         <div className="mt-12 flex justify-center">
           <video
             controls
@@ -945,14 +1153,14 @@ const TarajiSunluxEnergy = () => (
       </div>
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <img
-          src={sunlux1}
-          alt="Sunlux Energy 1"
+          src={sunlux2}
+          alt="Sunlux Energy Banner"
           className="rounded-xl shadow-lg object-contain w-full h-64 bg-white"
           style={{ background: "#fff" }}
         />
         <img
-          src={sunlux2}
-          alt="Sunlux Energy 2"
+          src={sunlux1}
+          alt="Sunlux Energy 1"
           className="rounded-xl shadow-lg object-cover w-full h-64"
         />
         <img
@@ -986,7 +1194,7 @@ const TarajiAgri = () => (
   <div className="App bg-gray-50">
     <Navigation currentSection={"taraji-agri"} />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
-      <h1 className="text-4xl font-bold text-green-800 mb-6">Taraji Agri</h1>
+      <h1 className="text-4xl font-bold text-green-800 mb-6">Taraji Farms</h1>
       <p className="mb-4 text-lg text-gray-700">
         Optimizing agricultural productivity while preserving the natural
         environment, and ensuring the highest quality of agricultural products.
@@ -1225,12 +1433,12 @@ const ServicesSection = () => {
       title: "Taraji Sunlux Energy",
       description:
         "Providing Quality Renewable Energy and Technology through renewable energy such as solar bio-fuel among other solutions.",
-      image: sunluxLogo,
+      image: sunlux2,
       gradient: "from-green-500 to-emerald-500",
       link: "/taraji-sunlux-energy",
     },
     {
-      title: "Taraji Agri",
+      title: "Taraji Farms",
       description:
         "Optimizing agricultural productivity while preserving the natural environment, and ensuring the highest quality of agricultural products.",
       image: tarajiAgri2_5,
@@ -1244,6 +1452,14 @@ const ServicesSection = () => {
       image: foundationImg2,
       gradient: "from-emerald-500 to-blue-500",
       link: "/taraji-foundations",
+    },
+    {
+      title: "Food & Beverages",
+      description:
+        "Delivering innovative culinary solutions and sustainable food practices to create exceptional dining experiences.",
+      image: foodAndBeverageImg1,
+      gradient: "from-orange-500 to-red-500",
+      link: "/food-beverages",
     },
   ];
 
@@ -1262,7 +1478,7 @@ const ServicesSection = () => {
                   alt={service.title}
                   className={`w-full h-56 ${
                     service.title === "Taraji Sunlux Energy"
-                      ? "object-contain bg-white"
+                      ? "object-cover bg-white"
                       : "object-cover"
                   } rounded-t-2xl shadow-md border-b-4 border-blue-100 transition-transform duration-300 hover:scale-105`}
                   style={
@@ -1726,39 +1942,86 @@ function MainApp() {
 const FoodAndBeverages = () => (
   <div className="App bg-gray-50">
     <Navigation currentSection={"food-beverages"} />
-    <div className="relative min-h-screen flex items-center justify-center">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwxfHxmb29kJTIwYmV2ZXJhZ2V8ZW58MHx8fHwxNzUyMzUwODA0fDA&ixlib=rb-4.1.0&q=85')`,
-        }}
-      ></div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
+      <h1 className="text-4xl font-bold text-orange-700 mb-6">
+        Food & Beverages
+      </h1>
+      <p className="mb-4 text-lg text-gray-700">
+        Delivering innovative culinary solutions and sustainable food practices
+        to create exceptional dining experiences.
+      </p>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-green-900 opacity-70"></div>
+      {/* Food & Beverages Showcase */}
+      <div className="mt-12 mb-12">
+        <h2 className="text-3xl font-bold text-orange-700 mb-8 text-center">
+          Our Culinary Excellence
+        </h2>
 
-      {/* Content */}
-      <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-          Food & Beverages
-        </h1>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Food & Beverage Image 1 */}
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-orange-100">
+            <div className="p-6">
+              <h3 className="text-xl font-bold text-orange-700 mb-4 text-center">
+                Premium Food Services
+              </h3>
+              <div className="relative overflow-hidden rounded-xl">
+                <img
+                  src={foodAndBeverageImg1}
+                  alt="Premium Food Services"
+                  className="w-full h-64 object-cover bg-gradient-to-br from-orange-50 to-red-50 transition-transform duration-300 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-orange-500/10 to-transparent pointer-events-none"></div>
+              </div>
+            </div>
+          </div>
 
-        <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white border-opacity-20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-            Coming Soon
-          </h2>
-          <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
-            We're cooking up something amazing! Our Food & Beverages division is
-            currently in development.
+          {/* Food & Beverage Image 2 */}
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-orange-100">
+            <div className="p-6">
+              <h3 className="text-xl font-bold text-orange-700 mb-4 text-center">
+                Beverage Excellence
+              </h3>
+              <div className="relative overflow-hidden rounded-xl">
+                <img
+                  src={foodAndBeverageImg2}
+                  alt="Beverage Excellence"
+                  className="w-full h-64 object-cover bg-gradient-to-br from-orange-50 to-red-50 transition-transform duration-300 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-orange-500/10 to-transparent pointer-events-none"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Call to Action */}
+      <div className="mt-12 text-center">
+        <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-8 rounded-2xl shadow-xl">
+          <h3 className="text-2xl font-bold mb-4">
+            Experience Culinary Innovation
+          </h3>
+          <p className="text-lg mb-6">
+            Discover our commitment to sustainable food practices and
+            exceptional dining experiences.
           </p>
-          <p className="text-lg text-gray-300 mt-4">
-            Stay tuned for innovative culinary solutions and sustainable food
-            practices.
-          </p>
+          <button className="bg-white text-orange-600 px-8 py-3 rounded-full font-semibold hover:bg-orange-50 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            Learn More
+          </button>
         </div>
       </div>
     </div>
+    <ContactSection
+      contacts={[
+        {
+          name: "Sherry Seepersad",
+          role: "Managing Director, Taraji Health Care",
+          image: sherryImg,
+          whatsapp: "+1(868)788-2753",
+          linkedin: "https://www.linkedin.com/in/sherry-seepersad-38402049/",
+          email: "s.seepersad@taraji-quest.com",
+        },
+      ]}
+    />
     <Footer />
   </div>
 );

@@ -61,11 +61,11 @@ html {
   .text-7xl {
     font-size: 3rem;
   }
-  
+
   .text-5xl {
     font-size: 2.5rem;
   }
-  
+
   .text-4xl {
     font-size: 2rem;
   }
@@ -108,4 +108,20 @@ img[src=""] {
     background-color: #1f2937;
     color: #f9fafb;
   }
+}
+
+/* Fade in animation for carousel */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.7s ease-in-out;
 }
