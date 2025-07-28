@@ -46,6 +46,7 @@ import tarajiHealthcarePresentation from "./assets/taraji-healthcare/taraji-heal
 import oxygenGenerator from "./assets/taraji-healthcare/oxygen-generator.png";
 import nitrogenGenerator from "./assets/taraji-healthcare/nitrogen-generator.png";
 import cyrogenicTanks from "./assets/taraji-healthcare/cyrogenic-tanks.png";
+import cyrogenicTanks2 from "./assets/taraji-healthcare/cyrogenic-tanks-2.png";
 import bsAndDnSockets from "./assets/taraji-healthcare/bs-and-dn-sockets.png";
 import modularSocketBoxes from "./assets/taraji-healthcare/modular-socket-boxes.png";
 import centralVacuumApparatus from "./assets/taraji-healthcare/central-vaccum-apparatus.png";
@@ -88,6 +89,9 @@ import doorTopWarningLight from "./assets/taraji-healthcare/door-top-warning-lig
 import digitalManagementInterface from "./assets/taraji-healthcare/digital-management-interface.png";
 import desktopTicketMachine from "./assets/taraji-healthcare/desktop-ticket-machine.png";
 import consoleTicketUnit from "./assets/taraji-healthcare/console-ticket-unit.png";
+import o2Co2Plant from "./assets/taraji-healthcare/o2-co2-plant.png";
+import o2Co2Plant2 from "./assets/taraji-healthcare/o2-co2-plant2.png";
+import twoChannelRailSingleLampType from "./assets/taraji-healthcare/2-channel-rail-single-lamp-type.png";
 import tarajiFoodsAndBeveragesLogo from "./assets/taraji-foods-and-beverages/taraji-food-and-beverages-logo.jpg";
 import foodAndBeverageImg1 from "./assets/taraji-foods-and-beverages/food-and-beverage-img1.jpg";
 import foodAndBeverageImg2 from "./assets/taraji-foods-and-beverages/food-and-beverage-img2.jpg";
@@ -673,16 +677,24 @@ const TarajiHealthCare = () => {
       image: nitrogenGenerator,
     },
     {
-      title: "Cyrogenic Tanks",
+      title: "Cyrogenic Tanks (1)",
       image: cyrogenicTanks,
+    },
+    {
+      title: "Cyrogenic Tanks (2)",
+      image: cyrogenicTanks2,
     },
     {
       title: "BS & DN Gas Sockets",
       image: bsAndDnSockets,
     },
     {
-      title: "Modular Socket Boxes",
+      title: "Modular Socket Boxes (1)",
       image: modularSocketBoxes,
+    },
+    {
+      title: "Modular Socket Boxes (2)",
+      image: modularSocketBoxes2,
     },
     {
       title: "Central Vacuum Apparatus",
@@ -697,8 +709,24 @@ const TarajiHealthCare = () => {
       image: regulator,
     },
     {
-      title: "Pendants",
+      title: "Pendants (1)",
       image: pendants,
+    },
+    {
+      title: "Pendants (2)",
+      image: pendants2,
+    },
+    {
+      title: "Pendants (3)",
+      image: pendants3,
+    },
+    {
+      title: "Pendants (4)",
+      image: pendants4,
+    },
+    {
+      title: "Pendants (5)",
+      image: pendants5,
     },
     {
       title: "Nurse Call Systems",
@@ -709,11 +737,11 @@ const TarajiHealthCare = () => {
       image: bedsideCallPanel,
     },
     {
-      title: "Black Cap Blood Collection Tube",
+      title: "Black Cap Blood Collection Tube (1)",
       image: blackCapBloodCollectionTube,
     },
     {
-      title: "Black Cap Blood Collection Tube 2",
+      title: "Black Cap Blood Collection Tube (2)",
       image: blackCapBloodCollectionTube2,
     },
     {
@@ -759,6 +787,10 @@ const TarajiHealthCare = () => {
     {
       title: "3 Channel and 2 Lamp Rail Type",
       image: threeChannelAndTwoLampRailType,
+    },
+    {
+      title: "2 Channel Rail Single Lamp Type",
+      image: twoChannelRailSingleLampType,
     },
     {
       title: "H Type Intensive Type",
@@ -823,6 +855,14 @@ const TarajiHealthCare = () => {
     {
       title: "Console Ticket Unit",
       image: consoleTicketUnit,
+    },
+    {
+      title: "O2-CO2 Plant (1)",
+      image: o2Co2Plant,
+    },
+    {
+      title: "O2-CO2 Plant (2)",
+      image: o2Co2Plant2,
     },
   ];
 

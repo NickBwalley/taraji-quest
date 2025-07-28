@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ea829a3f.css",
-    "main.js": "/static/js/main.eb8106af.js",
+    "main.css": "/static/css/main.c0777485.css",
+    "main.js": "/static/js/main.3a661fc1.js",
     "static/media/taraji-healthcare-v1.mp4": "/static/media/taraji-healthcare-v1.ce721425ad5446257dd6.mp4",
     "static/media/taraji-foundation-video1.mp4": "/static/media/taraji-foundation-video1.c79cdf7cf6b0d67b581f.mp4",
     "static/media/taraji-foundation-video2.mp4": "/static/media/taraji-foundation-video2.f6c3697d1a2ee00b5034.mp4",
@@ -14,6 +14,7 @@
     "static/media/main-display-unit.png": "/static/media/main-display-unit.73a2d05d4d82e463b33d.png",
     "static/media/pendants.png": "/static/media/pendants.44f38ed0ec4cbb2c7163.png",
     "static/media/nitrogen-generator.png": "/static/media/nitrogen-generator.6034054ecb3b0096385e.png",
+    "static/media/food-and-beverage-img1.jpg": "/static/media/food-and-beverage-img1.1a3aa90177004b4f99d1.jpg",
     "static/media/pendants4.png": "/static/media/pendants4.43ec852e4f2bd2e97791.png",
     "static/media/pendants2.png": "/static/media/pendants2.6ae6df0b996004ae6be8.png",
     "static/media/pendants5.png": "/static/media/pendants5.f837dcc0a2847d34be09.png",
@@ -72,21 +73,24 @@
     "static/media/noel-ikiara1.png": "/static/media/noel-ikiara1.b70a04118eaf03c554b1.png",
     "static/media/h-type-intensive-type.png": "/static/media/h-type-intensive-type.1edb190e30ce3b0e7a13.png",
     "static/media/sherry-seepersad1.jpg": "/static/media/sherry-seepersad1.11ea61707ee27bb03300.jpg",
+    "static/media/food-and-beverage-img2.jpg": "/static/media/food-and-beverage-img2.338e1042ac865a95bcea.jpg",
     "static/media/3-channel-and-2lamp-rail-type.png": "/static/media/3-channel-and-2lamp-rail-type.c69344c639823d7e84d1.png",
     "static/media/sun-in-one-partner.png": "/static/media/sun-in-one-partner.f130cfe0993ce4771254.png",
     "static/media/taraji-sunlux-energy-1.jpg": "/static/media/taraji-sunlux-energy-1.a5edb99f56a71dc0dbdd.jpg",
+    "static/media/taraji-foundation-logo.jpg": "/static/media/taraji-foundation-logo.5466af61666b9cc8d7a9.jpg",
     "static/media/inlux-solar-partner.png": "/static/media/inlux-solar-partner.62ad6f6848cc1fceadd5.png",
     "static/media/kathy-awuor(1).jpg": "/static/media/kathy-awuor(1).f95b20995c2750fc7a5f.jpg",
     "static/media/taraji-sunlux-energy-4.jpg": "/static/media/taraji-sunlux-energy-4.b2e42f825deeefd88532.jpg",
     "static/media/taraji-sunlux-energy-logo.jpg": "/static/media/taraji-sunlux-energy-logo.12a0662445ec0a21ce12.jpg",
     "static/media/oxyworld-partner.png": "/static/media/oxyworld-partner.14b8e0145ca046b1222c.png",
     "static/media/max-international.png": "/static/media/max-international.9e62e0600339d913937d.png",
+    "static/media/taraji-food-and-beverages-logo.jpg": "/static/media/taraji-food-and-beverages-logo.81b13485da6a36f457e7.jpg",
     "index.html": "/index.html",
-    "main.ea829a3f.css.map": "/static/css/main.ea829a3f.css.map",
-    "main.eb8106af.js.map": "/static/js/main.eb8106af.js.map"
+    "main.c0777485.css.map": "/static/css/main.c0777485.css.map",
+    "main.3a661fc1.js.map": "/static/js/main.3a661fc1.js.map"
   },
   "entrypoints": [
-    "static/css/main.ea829a3f.css",
-    "static/js/main.eb8106af.js"
+    "static/css/main.c0777485.css",
+    "static/js/main.3a661fc1.js"
   ]
 }
