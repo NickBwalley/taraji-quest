@@ -107,6 +107,7 @@ import twoChannelRailSingleLampType2 from "./assets/taraji-healthcare/2-channel-
 import tarajiFoodAndBeveragesLogo from "./assets/taraji-logos/taraji-food-and-beverages-logo.jpg";
 import tarajiSunluxEnergyLogo from "./assets/taraji-logos/taraji-sunlux-energy-logo.jpg";
 import tarajiFarmsLogo from "./assets/taraji-logos/taraji-farms-logo.jpg";
+import tarajiHealthcareLogo from "./assets/oxyworld-psa-new-logo2.png";
 
 // ScrollToTop component for route changes
 function ScrollToTop() {
@@ -326,7 +327,7 @@ const Navigation = ({ currentSection }) => {
                     onClick={() => handlePillarNav("/food-beverages")}
                     className="block px-4 py-2 text-white hover:bg-white hover:bg-opacity-10 transition-colors duration-200 cursor-pointer"
                   >
-                    Food & Beverages
+                    Taraji Food & Beverages
                   </span>
                 </div>
               </div>
@@ -440,7 +441,7 @@ const Navigation = ({ currentSection }) => {
                     onClick={() => handlePillarNav("/food-beverages")}
                     className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
                   >
-                    Food & Beverages
+                    Taraji Food & Beverages
                   </span>
                 </div>
               )}
@@ -982,7 +983,7 @@ const TarajiHealthCare = () => {
         {/* 1. Header */}
         <div className="flex items-center justify-center mb-6">
           <img
-            src={tarajiFarmsLogo}
+            src={tarajiHealthcareLogo}
             alt="Taraji Health Care Logo"
             className="w-16 h-16 mr-4 rounded-lg shadow-md"
           />
@@ -1560,7 +1561,7 @@ const ServicesSection = () => {
       link: "/taraji-foundations",
     },
     {
-      title: "Food & Beverages",
+      title: "Taraji Food & Beverages",
       description:
         "Delivering innovative culinary solutions and sustainable food practices to create exceptional dining experiences.",
       image: foodAndBeverageImg1,
@@ -2052,10 +2053,12 @@ const FoodAndBeverages = () => (
       <div className="flex items-center justify-center mb-6">
         <img
           src={tarajiFoodAndBeveragesLogo}
-          alt="Food & Beverages Logo"
+          alt="Taraji Food & Beverages Logo"
           className="w-16 h-16 mr-4 rounded-lg shadow-md"
         />
-        <h1 className="text-4xl font-bold text-orange-700">Food & Beverages</h1>
+        <h1 className="text-4xl font-bold text-orange-700">
+          Taraji Food & Beverages
+        </h1>
       </div>
       <p className="mb-4 text-lg text-gray-700">
         Delivering innovative culinary solutions and sustainable food practices
