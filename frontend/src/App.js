@@ -16,7 +16,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import tarajiAgri1 from "./assets/taraji-agri/taraji-agri-2.jpg";
-import tarajiAgri2 from "./assets/taraji-agri/taraji-agri-2.jpg";
+import tarajiAgri2 from "./assets/taraji-agri/taraji-agri-2.5.jpg";
 import tarajiAgri3 from "./assets/taraji-agri/taraji-agri-3.jpg";
 import tarajiAgri4 from "./assets/taraji-agri/taraji-agri-4.jpg";
 import tarajiAgri5 from "./assets/taraji-agri/taraji-agri-5.jpg";
@@ -1290,6 +1290,14 @@ const TarajiHealthCare = () => {
       <ContactSection
         contacts={[
           {
+            name: "Sherry Seepersad",
+            role: "Managing Director",
+            image: sherryImg,
+            whatsapp: "+1(868)788-2753",
+            phone: "+1(868)788-2753",
+            email: "s.seepersad@taraji-quest.com",
+          },
+          {
             name: "Kathy Awuor",
             role: "SALES & MARKETING EXECUTIVE",
             image: kathyImg,
@@ -1439,11 +1447,19 @@ const TarajiAgri = () => (
       contacts={[
         {
           name: "Sherry Seepersad",
-          role: "Managing Director, Taraji Health Care",
+          role: "Managing Director",
           image: sherryImg,
           whatsapp: "+1(868)788-2753",
           linkedin: "https://www.linkedin.com/in/sherry-seepersad-38402049/",
           email: "s.seepersad@taraji-quest.com",
+        },
+        {
+          name: "Kathy Awuor",
+          role: "SALES & MARKETING EXECUTIVE",
+          image: kathyImg,
+          whatsapp: "+254 712 177 895",
+          linkedin: "https://www.linkedin.com/in/kathy-stacy-955461257/",
+          email: "healthcare@taraji-quest.com",
         },
       ]}
     />
