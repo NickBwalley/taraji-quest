@@ -16,7 +16,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import tarajiAgri1 from "./assets/taraji-agri/taraji-agri-2.jpg";
-import tarajiAgri2 from "./assets/taraji-agri/taraji-agri-2.5.jpg";
+import tarajiAgri2 from "./assets/taraji-agri/taraji-agri-2.jpg";
 import tarajiAgri3 from "./assets/taraji-agri/taraji-agri-3.jpg";
 import tarajiAgri4 from "./assets/taraji-agri/taraji-agri-4.jpg";
 import tarajiAgri5 from "./assets/taraji-agri/taraji-agri-5.jpg";
@@ -1592,7 +1592,7 @@ const ServicesSection = () => {
       title: "Taraji Farms",
       description:
         "Optimizing agricultural productivity while preserving the natural environment, and ensuring the highest quality of agricultural products.",
-      image: tarajiAgri2_5,
+      image: tarajiAgri2,
       gradient: "from-blue-500 to-green-500",
       link: "/taraji-agri",
     },
