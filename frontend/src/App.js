@@ -1293,16 +1293,16 @@ const TarajiHealthCare = () => {
             name: "Sherry Seepersad",
             role: "Managing Director",
             image: sherryImg,
-            whatsapp: "+1(868)788-2753",
             phone: "+1(868)788-2753",
+            whatsapp: "+1(868)788-2753",
             email: "s.seepersad@taraji-quest.com",
           },
           {
             name: "Kathy Awuor",
             role: "SALES & MARKETING EXECUTIVE",
             image: kathyImg,
-            whatsapp: "+254 712 177 895",
             phone: "+254 731 791 827",
+            whatsapp: "+254 712 177 895",
             email: "healthcare@taraji-quest.com",
           },
         ]}
@@ -2062,6 +2062,22 @@ const ContactSection = ({ contacts }) => {
               </div>
 
               <div className="space-y-4">
+                {contact.phone && (
+                  <a
+                    href={`tel:${contact.phone}`}
+                    className="flex items-center justify-center gap-3 bg-green-600 text-white px-4 py-3 rounded-lg hover:bg-green-700 transition-colors duration-300 shadow-md"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
+                    </svg>
+                    <span>Call: {contact.phone}</span>
+                  </a>
+                )}
+
                 {contact.whatsapp && (
                   <a
                     href={`https://wa.me/${contact.whatsapp.replace(
@@ -2096,22 +2112,6 @@ const ContactSection = ({ contacts }) => {
                       <path d="M0 3v18h24V3H0zm21.518 2L12 12.713 2.482 5h19.036zM2 19V7.183l10 8.104 10-8.104V19H2z" />
                     </svg>
                     <span>Email: {contact.email}</span>
-                  </a>
-                )}
-
-                {contact.phone && (
-                  <a
-                    href={`tel:${contact.phone}`}
-                    className="flex items-center justify-center gap-3 bg-green-600 text-white px-4 py-3 rounded-lg hover:bg-green-700 transition-colors duration-300 shadow-md"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
-                    </svg>
-                    <span>Call: {contact.phone}</span>
                   </a>
                 )}
 
