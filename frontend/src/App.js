@@ -57,7 +57,6 @@ import pendants2 from "./assets/taraji-healthcare/pendants2.png";
 import pendants3 from "./assets/taraji-healthcare/pendants3.png";
 import pendants4 from "./assets/taraji-healthcare/pendants4.png";
 import pendants5 from "./assets/taraji-healthcare/pendants5.png";
-import modularSocketBoxes2 from "./assets/taraji-healthcare/modular-socket-boxes2.png";
 import nurseCallSystems from "./assets/taraji-healthcare/nurse-call-systems.png";
 import bedsideCallPanel from "./assets/taraji-healthcare/bedside-call-panel.png";
 import blackCapBloodCollectionTube from "./assets/taraji-healthcare/black-cap-blood-collection-tube.png";
@@ -95,7 +94,19 @@ import twoChannelRailSingleLampType from "./assets/taraji-healthcare/2-channel-r
 import tarajiFoodsAndBeveragesLogo from "./assets/taraji-foods-and-beverages/taraji-food-and-beverages-logo.jpg";
 import foodAndBeverageImg1 from "./assets/taraji-foods-and-beverages/food-and-beverage-img1.jpg";
 import foodAndBeverageImg2 from "./assets/taraji-foods-and-beverages/food-and-beverage-img2.jpg";
-import tarajiFoundationLogo from "./assets/taraji-healthcare/taraji-foundation-logo.jpg";
+import tarajiFoundationLogo from "./assets/taraji-logos/taraji-foundation-logo.jpg";
+import blackCapBloodCollectionTube3 from "./assets/taraji-healthcare/blood-cap-collection-tube3.png";
+import blackCapBloodCollectionTube4 from "./assets/taraji-healthcare/blood-cap-collection-tube4.png";
+import blackCapBloodCollectionTube5 from "./assets/taraji-healthcare/blood-cap-collection-tube5.png";
+import patientHandcallButton2 from "./assets/taraji-healthcare/patient-handcall-button2.png";
+import stainlessSteelStorageAndShelving from "./assets/taraji-healthcare/stainless-steel-storage-and-shelving.png";
+import stainlessSteelStorageSystems from "./assets/taraji-healthcare/stainless-steel-storage-systems.png";
+import pneumaticConveyingSystem2 from "./assets/taraji-healthcare/pneumatic-conveying-system2.png";
+import pneumaticConveyingSystem3 from "./assets/taraji-healthcare/pneumatic-conveying-system3.png";
+import twoChannelRailSingleLampType2 from "./assets/taraji-healthcare/2-channel-rail-single-lamp-type2.png";
+import tarajiFoodAndBeveragesLogo from "./assets/taraji-logos/taraji-food-and-beverages-logo.jpg";
+import tarajiSunluxEnergyLogo from "./assets/taraji-logos/taraji-sunlux-energy-logo.jpg";
+import tarajiFarmsLogo from "./assets/taraji-logos/taraji-farms-logo.jpg";
 
 // ScrollToTop component for route changes
 function ScrollToTop() {
@@ -664,7 +675,7 @@ const TarajiHealthCare = () => {
   const [fullScreenTitle, setFullScreenTitle] = useState("");
 
   const pendantsImages = [pendants, pendants2, pendants3, pendants4, pendants5];
-  const modularSocketBoxesImages = [modularSocketBoxes, modularSocketBoxes2];
+  const modularSocketBoxesImages = [modularSocketBoxes];
 
   // Equipment data array
   const equipmentData = [
@@ -692,10 +703,7 @@ const TarajiHealthCare = () => {
       title: "Modular Socket Boxes (1)",
       image: modularSocketBoxes,
     },
-    {
-      title: "Modular Socket Boxes (2)",
-      image: modularSocketBoxes2,
-    },
+
     {
       title: "Central Vacuum Apparatus",
       image: centralVacuumApparatus,
@@ -737,52 +745,88 @@ const TarajiHealthCare = () => {
       image: bedsideCallPanel,
     },
     {
-      title: "Black Cap Blood Collection Tube (1)",
-      image: blackCapBloodCollectionTube,
+      title: "Console Ticket Unit",
+      image: consoleTicketUnit,
     },
     {
-      title: "Black Cap Blood Collection Tube (2)",
-      image: blackCapBloodCollectionTube2,
+      title: "Desktop Ticket Machine",
+      image: desktopTicketMachine,
     },
     {
-      title: "Negative Pressure Wound Care System",
-      image: negativePressureWoundCareSystem,
+      title: "Digital Management Interface",
+      image: digitalManagementInterface,
     },
     {
-      title: "Vacuum Plant",
-      image: vaccumPlant,
+      title: "Door Top Warning Light",
+      image: doorTopWarningLight,
     },
     {
-      title: "Regional Gas Control Unit",
-      image: regionalGasControlUnit,
+      title: "Hospital Call Center Server",
+      image: hospitalCallCenterServer,
     },
     {
-      title: "Pressure Sensor",
-      image: pressureSensor,
+      title: "Main Display Unit",
+      image: mainDisplayUnit,
     },
     {
-      title: "Medical Dry Air Plant",
-      image: medicalDryAirPlant,
+      title: "Patient Handcall Button",
+      image: patientHandcallButton,
     },
     {
-      title: "Gas Ball Valves",
-      image: gasBallValves,
+      title: "Patient Handcall Button (2)",
+      image: patientHandcallButton2,
     },
     {
-      title: "Digital Alarms",
-      image: digitalAlarms,
+      title: "Bathroom Emergency Call Unit",
+      image: bathroomEmergencyCallunit,
     },
     {
-      title: "Change Over",
-      image: changeOver,
+      title: "Hydraulic Stool",
+      image: hydraulicStool,
     },
     {
-      title: "Central Alarm Panel",
-      image: centralAlarmPanel,
+      title: "Stainless Steel Handwashing & Hygiene System",
+      image: stainlessSteelHandwashing,
     },
     {
-      title: "Anaesthesia Medical Gas Evacuation",
-      image: anaesthesiaMedicalGasEvacuation,
+      title: "Stainless Steel Carry System",
+      image: stainlessSteelCarrySystem,
+    },
+    {
+      title: "Stainless Steel Observation & Packaging System",
+      image: stainlessSteelObservation,
+    },
+    {
+      title: "Stainless Steel Storage and Shelving",
+      image: stainlessSteelStorageAndShelving,
+    },
+    {
+      title: "Stainless Steel Storage Systems",
+      image: stainlessSteelStorageSystems,
+    },
+    {
+      title: "UVC Germicidal Lamps",
+      image: uvcGermicidalLamps,
+    },
+    {
+      title: "Pneumatic Conveying Systems",
+      image: pneumaticConveyingSystems,
+    },
+    {
+      title: "Pneumatic Conveying System (2)",
+      image: pneumaticConveyingSystem2,
+    },
+    {
+      title: "Pneumatic Conveying System (3)",
+      image: pneumaticConveyingSystem3,
+    },
+    {
+      title: "Patients Bed Heads Column Type",
+      image: patientsBedHeadsColumnType,
+    },
+    {
+      title: "H Type Intensive Type",
+      image: hTypeIntensiveType,
     },
     {
       title: "3 Channel and 2 Lamp Rail Type",
@@ -793,76 +837,72 @@ const TarajiHealthCare = () => {
       image: twoChannelRailSingleLampType,
     },
     {
-      title: "H Type Intensive Type",
-      image: hTypeIntensiveType,
+      title: "2 Channel Rail Single Lamp Type (2)",
+      image: twoChannelRailSingleLampType2,
     },
     {
-      title: "Patients Bed Heads Column Type",
-      image: patientsBedHeadsColumnType,
+      title: "Anaesthesia Medical Gas Evacuation",
+      image: anaesthesiaMedicalGasEvacuation,
     },
     {
-      title: "Pneumatic Conveying Systems",
-      image: pneumaticConveyingSystems,
+      title: "Central Alarm Panel",
+      image: centralAlarmPanel,
     },
     {
-      title: "UVC Germicidal Lamps",
-      image: uvcGermicidalLamps,
+      title: "Change Over",
+      image: changeOver,
     },
     {
-      title: "Stainless Steel Observation",
-      image: stainlessSteelObservation,
+      title: "Digital Alarms",
+      image: digitalAlarms,
     },
     {
-      title: "Stainless Steel Carry System",
-      image: stainlessSteelCarrySystem,
+      title: "Gas Ball Valves",
+      image: gasBallValves,
     },
     {
-      title: "Stainless Steel Handwashing",
-      image: stainlessSteelHandwashing,
-    },
-    {
-      title: "Hydraulic Stool",
-      image: hydraulicStool,
-    },
-    {
-      title: "Bathroom Emergency Call Unit",
-      image: bathroomEmergencyCallunit,
-    },
-    {
-      title: "Patient Handcall Button",
-      image: patientHandcallButton,
-    },
-    {
-      title: "Main Display Unit",
-      image: mainDisplayUnit,
-    },
-    {
-      title: "Hospital Call Center Server",
-      image: hospitalCallCenterServer,
-    },
-    {
-      title: "Door Top Warning Light",
-      image: doorTopWarningLight,
-    },
-    {
-      title: "Digital Management Interface",
-      image: digitalManagementInterface,
-    },
-    {
-      title: "Desktop Ticket Machine",
-      image: desktopTicketMachine,
-    },
-    {
-      title: "Console Ticket Unit",
-      image: consoleTicketUnit,
-    },
-    {
-      title: "O2-CO2 Plant (1)",
-      image: o2Co2Plant,
+      title: "Medical Dry Air Plant",
+      image: medicalDryAirPlant,
     },
     {
       title: "O2-CO2 Plant (2)",
       image: o2Co2Plant2,
+    },
+    {
+      title: "Pressure Sensor",
+      image: pressureSensor,
+    },
+    {
+      title: "Regional Gas Control Unit",
+      image: regionalGasControlUnit,
+    },
+    {
+      title: "Vacuum Plant",
+      image: vaccumPlant,
+    },
+    {
+      title: "Negative Pressure Wound Care System",
+      image: negativePressureWoundCareSystem,
+    },
+    {
+      title: "Black Cap Blood Collection Tube (1)",
+      image: blackCapBloodCollectionTube,
+    },
+    {
+      title: "Black Cap Blood Collection Tube (2)",
+      image: blackCapBloodCollectionTube2,
+    },
+    {
+      title: "Black Cap Blood Collection Tube (3)",
+      image: blackCapBloodCollectionTube3,
+    },
+    {
+      title: "Black Cap Blood Collection Tube (4)",
+      image: blackCapBloodCollectionTube4,
+    },
+    {
+      title: "Black Cap Blood Collection Tube (5)",
+      image: blackCapBloodCollectionTube5,
     },
   ];
 
@@ -874,7 +914,7 @@ const TarajiHealthCare = () => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === equipmentData.length - 1 ? 0 : prevIndex + 1
       );
-    }, 4000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, equipmentData.length]);
@@ -940,9 +980,16 @@ const TarajiHealthCare = () => {
       <Navigation currentSection={"taraji-healthcare"} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
         {/* 1. Header */}
-        <h1 className="text-4xl font-bold text-blue-700 mb-6">
-          Taraji Health Care
-        </h1>
+        <div className="flex items-center justify-center mb-6">
+          <img
+            src={tarajiFarmsLogo}
+            alt="Taraji Health Care Logo"
+            className="w-16 h-16 mr-4 rounded-lg shadow-md"
+          />
+          <h1 className="text-4xl font-bold text-blue-700">
+            Taraji Health Care
+          </h1>
+        </div>
         <p className="mb-4 text-lg text-gray-700">
           Providing Quality and Affordable Healthcare throughout Africa with a
           vision for social and economic balance within the Community.
@@ -1171,9 +1218,16 @@ const TarajiSunluxEnergy = () => (
   <div className="App bg-gray-50">
     <Navigation currentSection={"taraji-sunlux-energy"} />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
-      <h1 className="text-4xl font-bold text-green-700 mb-6">
-        Taraji Sunlux Energy
-      </h1>
+      <div className="flex items-center justify-center mb-6">
+        <img
+          src={tarajiSunluxEnergyLogo}
+          alt="Taraji Sunlux Energy Logo"
+          className="w-16 h-16 mr-4 rounded-lg shadow-md"
+        />
+        <h1 className="text-4xl font-bold text-green-700">
+          Taraji Sunlux Energy
+        </h1>
+      </div>
       <p className="mb-4 text-lg text-gray-700">
         Providing Quality Renewable Energy and Technology through renewable
         energy such as solar bio-fuel among other solutions.
@@ -1234,7 +1288,14 @@ const TarajiAgri = () => (
   <div className="App bg-gray-50">
     <Navigation currentSection={"taraji-agri"} />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
-      <h1 className="text-4xl font-bold text-green-800 mb-6">Taraji Farms</h1>
+      <div className="flex items-center justify-center mb-6">
+        <img
+          src={tarajiFarmsLogo}
+          alt="Taraji Farms Logo"
+          className="w-16 h-16 mr-4 rounded-lg shadow-md"
+        />
+        <h1 className="text-4xl font-bold text-green-800">Taraji Farms</h1>
+      </div>
       <p className="mb-4 text-lg text-gray-700">
         Optimizing agricultural productivity while preserving the natural
         environment, and ensuring the highest quality of agricultural products.
@@ -1361,9 +1422,14 @@ const TarajiFoundation = () => (
   <div className="App bg-gray-50">
     <Navigation currentSection={"taraji-foundations"} />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
-      <h1 className="text-4xl font-bold text-blue-800 mb-6">
-        Taraji Foundation
-      </h1>
+      <div className="flex items-center justify-center mb-6">
+        <img
+          src={tarajiFoundationLogo}
+          alt="Taraji Foundation Logo"
+          className="w-16 h-16 mr-4 rounded-lg shadow-md"
+        />
+        <h1 className="text-4xl font-bold text-blue-800">Taraji Foundation</h1>
+      </div>
       <p className="mb-4 text-lg text-gray-700">
         Empowering communities by addressing their needs with a focus on food,
         employment, affordable energy and preventative healthcare.
@@ -1983,9 +2049,14 @@ const FoodAndBeverages = () => (
   <div className="App bg-gray-50">
     <Navigation currentSection={"food-beverages"} />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
-      <h1 className="text-4xl font-bold text-orange-700 mb-6">
-        Food & Beverages
-      </h1>
+      <div className="flex items-center justify-center mb-6">
+        <img
+          src={tarajiFoodAndBeveragesLogo}
+          alt="Food & Beverages Logo"
+          className="w-16 h-16 mr-4 rounded-lg shadow-md"
+        />
+        <h1 className="text-4xl font-bold text-orange-700">Food & Beverages</h1>
+      </div>
       <p className="mb-4 text-lg text-gray-700">
         Delivering innovative culinary solutions and sustainable food practices
         to create exceptional dining experiences.
