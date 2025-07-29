@@ -100,8 +100,8 @@ import blackCapBloodCollectionTube4 from "./assets/taraji-healthcare/blood-cap-c
 import blackCapBloodCollectionTube5 from "./assets/taraji-healthcare/blood-cap-collection-tube5.png";
 import tarajiHealthcareLogo from "./assets/oxyworld-psa-new-logo2.png";
 import tarajiSunluxEnergyLogo from "./assets/taraji-logos/taraji-sunlux-energy-logo.jpg";
-import tarajiAgriLogo from "./assets/taraji-logos/taraji-farms-logo.jpg";
-import tarajiFarmsLogo from "./assets/taraji-logos/taraji-farms-logo.jpg";
+import tarajiAgriLogo from "./assets/taraji-agri/taraji-agri-2.jpg";
+import tarajiFarmsLogo from "./assets/taraji-agri/taraji-agri-2.jpg";
 import tarajiFoodBeveragesLogo from "./assets/taraji-logos/taraji-food-and-beverages-logo.jpg";
 import patientHandcallButton2 from "./assets/taraji-healthcare/patient-handcall-button2.png";
 import stainlessSteelStorageAndShelving from "./assets/taraji-healthcare/stainless-steel-storage-and-shelving.png";
