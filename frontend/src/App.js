@@ -1580,7 +1580,7 @@ const TarajiFoundation = () => (
         },
         {
           name: "Sherry Seepersad",
-          role: "Managing Director, Taraji Health Care",
+          role: "Managing Director",
           image: sherryImg,
           whatsapp: "+1(868)788-2753",
           linkedin: "https://www.linkedin.com/in/sherry-seepersad-38402049/",
@@ -2208,7 +2208,7 @@ const FoodAndBeverages = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 min-h-screen pt-28">
       <div className="flex items-center justify-center mb-6">
         <img
-          src={tarajiFoodAndBeveragesLogo}
+          src={tarajiFoodBeveragesLogo}
           alt="Taraji Food & Beverages Logo"
           className="w-16 h-16 mr-4 rounded-lg shadow-md"
         />
@@ -2289,6 +2289,14 @@ const FoodAndBeverages = () => (
           whatsapp: "+1(868)788-2753",
           linkedin: "https://www.linkedin.com/in/sherry-seepersad-38402049/",
           email: "s.seepersad@taraji-quest.com",
+        },
+        {
+          name: "Kathy Awuor",
+          role: "SALES & MARKETING EXECUTIVE",
+          image: kathyImg,
+          whatsapp: "+254 712 177 895",
+          linkedin: "https://www.linkedin.com/in/kathy-stacy-955461257/",
+          email: "healthcare@taraji-quest.com",
         },
       ]}
     />
