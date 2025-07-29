@@ -98,16 +98,17 @@ import tarajiFoundationLogo from "./assets/taraji-logos/taraji-foundation-logo.j
 import blackCapBloodCollectionTube3 from "./assets/taraji-healthcare/blood-cap-collection-tube3.png";
 import blackCapBloodCollectionTube4 from "./assets/taraji-healthcare/blood-cap-collection-tube4.png";
 import blackCapBloodCollectionTube5 from "./assets/taraji-healthcare/blood-cap-collection-tube5.png";
+import tarajiHealthcareLogo from "./assets/oxyworld-psa-new-logo2.png";
+import tarajiSunluxEnergyLogo from "./assets/taraji-logos/taraji-sunlux-energy-logo.jpg";
+import tarajiAgriLogo from "./assets/taraji-logos/taraji-farms-logo.jpg";
+import tarajiFarmsLogo from "./assets/taraji-logos/taraji-farms-logo.jpg";
+import tarajiFoodBeveragesLogo from "./assets/taraji-logos/taraji-food-and-beverages-logo.jpg";
 import patientHandcallButton2 from "./assets/taraji-healthcare/patient-handcall-button2.png";
 import stainlessSteelStorageAndShelving from "./assets/taraji-healthcare/stainless-steel-storage-and-shelving.png";
 import stainlessSteelStorageSystems from "./assets/taraji-healthcare/stainless-steel-storage-systems.png";
 import pneumaticConveyingSystem2 from "./assets/taraji-healthcare/pneumatic-conveying-system2.png";
 import pneumaticConveyingSystem3 from "./assets/taraji-healthcare/pneumatic-conveying-system3.png";
 import twoChannelRailSingleLampType2 from "./assets/taraji-healthcare/2-channel-rail-single-lamp-type2.png";
-import tarajiFoodAndBeveragesLogo from "./assets/taraji-logos/taraji-food-and-beverages-logo.jpg";
-import tarajiSunluxEnergyLogo from "./assets/taraji-logos/taraji-sunlux-energy-logo.jpg";
-import tarajiFarmsLogo from "./assets/taraji-logos/taraji-farms-logo.jpg";
-import tarajiHealthcareLogo from "./assets/oxyworld-psa-new-logo2.png";
 
 // ScrollToTop component for route changes
 function ScrollToTop() {
@@ -415,32 +416,75 @@ const Navigation = ({ currentSection }) => {
                 <div className="ml-4 mt-2 space-y-1">
                   <span
                     onClick={() => handlePillarNav("/taraji-healthcare")}
-                    className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
+                    className="flex items-center py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
                   >
+                    <img
+                      src={tarajiHealthcareLogo}
+                      alt="Taraji Healthcare"
+                      className="w-6 h-6 mr-3 rounded object-cover"
+                      onError={(e) =>
+                        console.log("Healthcare logo failed to load:", e)
+                      }
+                    />
                     Taraji Healthcare
                   </span>
                   <span
                     onClick={() => handlePillarNav("/taraji-sunlux-energy")}
-                    className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
+                    className="flex items-center py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
                   >
+                    <img
+                      src={tarajiSunluxEnergyLogo}
+                      alt="Taraji Sunlux Energy"
+                      className="w-6 h-6 mr-3 rounded object-cover"
+                      onError={(e) =>
+                        console.log("Sunlux Energy logo failed to load:", e)
+                      }
+                    />
                     Taraji Sunlux Energy
                   </span>
                   <span
                     onClick={() => handlePillarNav("/taraji-agri")}
-                    className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
+                    className="flex items-center py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
                   >
+                    <img
+                      src={tarajiAgriLogo}
+                      alt="Taraji Farms"
+                      className="w-6 h-6 mr-3 rounded object-cover"
+                      onError={(e) =>
+                        console.log("Taraji Farms logo failed to load:", e)
+                      }
+                    />
                     Taraji Farms
                   </span>
                   <span
                     onClick={() => handlePillarNav("/taraji-foundations")}
-                    className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
+                    className="flex items-center py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
                   >
+                    <img
+                      src={tarajiFoundationLogo}
+                      alt="Taraji Foundation"
+                      className="w-6 h-6 mr-3 rounded object-cover"
+                      onError={(e) =>
+                        console.log("Taraji Foundation logo failed to load:", e)
+                      }
+                    />
                     Taraji Foundation
                   </span>
                   <span
                     onClick={() => handlePillarNav("/food-beverages")}
-                    className="block py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
+                    className="flex items-center py-1 text-white hover:text-blue-400 text-sm cursor-pointer"
                   >
+                    <img
+                      src={tarajiFoodBeveragesLogo}
+                      alt="Taraji Food & Beverages"
+                      className="w-6 h-6 mr-3 rounded object-cover"
+                      onError={(e) =>
+                        console.log(
+                          "Taraji Food & Beverages logo failed to load:",
+                          e
+                        )
+                      }
+                    />
                     Taraji Food & Beverages
                   </span>
                 </div>
