@@ -1446,20 +1446,21 @@ const TarajiAgri = () => (
     <ContactSection
       contacts={[
         {
+          name: "Noel Ikiara",
+          role: "FOUNDER & Director",
+          image: noelImg,
+          whatsapp: "+254 722 283 442",
+          linkedin:
+            "https://www.linkedin.com/in/noel-ikiara-fcca-cpa-9333a52a/",
+          email: "noel@taraji-quest.com",
+        },
+        {
           name: "Sherry Seepersad",
           role: "Managing Director",
           image: sherryImg,
           whatsapp: "+1(868)788-2753",
           linkedin: "https://www.linkedin.com/in/sherry-seepersad-38402049/",
           email: "s.seepersad@taraji-quest.com",
-        },
-        {
-          name: "Kathy Awuor",
-          role: "SALES & MARKETING EXECUTIVE",
-          image: kathyImg,
-          whatsapp: "+254 712 177 895",
-          linkedin: "https://www.linkedin.com/in/kathy-stacy-955461257/",
-          email: "healthcare@taraji-quest.com",
         },
       ]}
     />
