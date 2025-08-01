@@ -1367,7 +1367,7 @@ const TarajiSunluxEnergy = () => (
           image: kathyImg,
           whatsapp: "+254 712 177 895",
           linkedin: "https://www.linkedin.com/in/kathy-stacy-955461257/",
-          email: "healthcare@taraji-quest.com",
+          email: "k.awuor@taraji-quest.com",
         },
       ]}
     />
