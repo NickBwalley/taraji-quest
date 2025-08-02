@@ -1754,14 +1754,14 @@ const TeamSection = () => {
       linkedin: "https://www.linkedin.com/in/aidahbani-wanjiru-4a54b2247/",
       email: "a.wanjiru@taraji-quest.com",
     },
-    {
-      name: "Nicholas Bwalley",
-      role: "IT ENGINEER & WEBSITE DEVELOPER",
-      image: nickImg,
-      whatsapp: "+254 714 394 332",
-      linkedin: "https://www.linkedin.com/in/nick-bwalley-49220a269/",
-      email: "nickbiiybwalley@gmail.com",
-    },
+    // {
+    //   name: "Nicholas Bwalley",
+    //   role: "IT ENGINEER & WEBSITE DEVELOPER",
+    //   image: nickImg,
+    //   whatsapp: "+254 714 394 332",
+    //   linkedin: "https://www.linkedin.com/in/nick-bwalley-49220a269/",
+    //   email: "nickbiiybwalley@gmail.com",
+    // },
   ];
 
   return (
